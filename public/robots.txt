@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://rigselhomestay.in
+
+# Sitemaps
+Sitemap: https://rigselhomestay.in/sitemap.xml
