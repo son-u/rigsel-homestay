@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { FaFacebook, FaInstagram, FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
+import { siteConfig } from "@/lib/site";
 
 const QUICK_LINKS = [
     { name: "About Us", href: "/about" },
@@ -91,27 +92,25 @@ export default function Footer() {
                             <div className="flex gap-3 text-sm text-foreground/60 leading-relaxed">
                                 <FaMapMarkerAlt className="flex-shrink-0 mt-1 text-primary" size={14} />
                                 <span>
-                                    Rigsel Homestay, Kaffer Gaon,<br />
-                                    Lolegaon, Kalimpong District,<br />
-                                    West Bengal 734314, India
+                                    {siteConfig.name}, {siteConfig.address}
                                 </span>
                             </div>
                             <div className="flex items-center gap-3 text-sm text-foreground/60">
                                 <FaPhoneAlt className="flex-shrink-0 text-primary" size={13} />
                                 <a
-                                    href="tel:+919000000000"
+                                    href={`tel:+91${siteConfig.contact.primary}`}
                                     className="hover:text-primary transition-colors"
                                 >
-                                    +91 90000 00000
+                                    +91 {siteConfig.contact.primary.slice(0, 5)} {siteConfig.contact.primary.slice(5)}
                                 </a>
                             </div>
                             <div className="flex items-center gap-3 text-sm text-foreground/60">
                                 <FaEnvelope className="flex-shrink-0 text-primary" size={13} />
                                 <a
-                                    href="mailto:booking@rigselhomestay.in"
+                                    href={`mailto:${siteConfig.contact.email}`}
                                     className="hover:text-primary transition-colors"
                                 >
-                                    booking@rigselhomestay.in
+                                    {siteConfig.contact.email}
                                 </a>
                             </div>
                         </address>

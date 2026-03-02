@@ -1,9 +1,10 @@
 "use client";
 
 import { FaWhatsapp } from "react-icons/fa";
+import { siteConfig } from "@/lib/site";
 
 export default function WhatsAppFAB() {
-    const phoneNumber = "919000000000"; // Placeholder number
+    const phoneNumber = `91${siteConfig.contact.primary}`;
     const message = "Hi, I'd like to inquire about a stay at Rigsel Homestay";
     const encodedMessage = encodeURIComponent(message);
 

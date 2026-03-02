@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { siteConfig } from "@/lib/site";
 import HeroSlider from "@/components/sections/hero-slider";
 import RoomsSection from "@/components/sections/rooms-section";
 import FoodSection from "@/components/sections/food-section";
@@ -174,7 +175,7 @@ export default function Home() {
                 </div>
                 <div>
                   <p className="text-xs font-bold tracking-widest uppercase text-muted-foreground">Verified Host</p>
-                  <p className="text-sm font-serif font-bold italic text-foreground">Family-run since 2018</p>
+                  <p className="text-sm font-serif font-bold italic text-foreground">{siteConfig.hosts}</p>
                 </div>
               </motion.div>
             </motion.div>
@@ -209,7 +210,7 @@ export default function Home() {
 
               {/* Description */}
               <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-xl">
-                Far from crowded tourist trails, <strong className="font-serif text-xl text-foreground font-semibold italic">Rigsel Homestay</strong> offers a genuine slice of Himalayan life in <strong className="font-serif text-xl text-foreground font-semibold italic">Kaffer Gaon, Kalimpong</strong>. Wake up to panoramic valley views, savour home-cooked Lepcha and Gorkha delicacies, and let the slow mountain pace heal your soul.
+                Hosted by <strong className="font-serif text-xl text-foreground font-semibold italic">{siteConfig.hosts}</strong>, Far from crowded tourist trails, <strong className="font-serif text-xl text-foreground font-semibold italic">Rigsel Homestay</strong> offers a genuine slice of Himalayan life in <strong className="font-serif text-xl text-foreground font-semibold italic">Kaffer Gaon, Kalimpong</strong>. Wake up to panoramic valley views, savour home-cooked Lepcha and Gorkha delicacies, and let the slow mountain pace heal your soul.
               </p>
 
               {/* Feature Pills */}

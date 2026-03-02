@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FaWhatsapp, FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
+import { siteConfig } from "@/lib/site";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -26,9 +27,9 @@ import {
     AccordionTrigger,
 } from "@/components/ui/accordion";
 
-const PRIMARY_PHONE = "+91 90000 00000";
-const SECONDARY_PHONE = "+91 91111 11111";
-const WHATSAPP_NUMBER = "919000000000";
+const PRIMARY_PHONE = `+91 ${siteConfig.contact.primary.slice(0, 5)} ${siteConfig.contact.primary.slice(5)}`;
+const SECONDARY_PHONE = `+91 ${siteConfig.contact.secondary.slice(0, 5)} ${siteConfig.contact.secondary.slice(5)}`;
+const WHATSAPP_NUMBER = `91${siteConfig.contact.primary}`;
 
 const formSchema = z.object({
     name: z.string().min(2, { message: "Name must be at least 2 characters." }),
@@ -231,8 +232,8 @@ export default function ContactPageClient() {
                                         </div>
                                         <div className="flex flex-col justify-center">
                                             <p className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-1">Email Us</p>
-                                            <a href="mailto:booking@rigselhomestay.in" className="text-lg font-medium text-foreground hover:text-primary transition-colors break-all">
-                                                booking@rigselhomestay.in
+                                            <a href={`mailto:${siteConfig.contact.email}`} className="text-lg font-medium text-foreground hover:text-primary transition-colors break-all">
+                                                {siteConfig.contact.email}
                                             </a>
                                         </div>
                                     </div>
@@ -246,8 +247,8 @@ export default function ContactPageClient() {
                                         <address className="not-italic flex flex-col justify-center relative z-10">
                                             <p className="text-sm font-semibold text-white/70 uppercase tracking-wider mb-1">Visit Us</p>
                                             <p className="text-base sm:text-lg font-medium leading-snug">
-                                                Rigsel Homestay, Kaffer Gaon<br />
-                                                Near Lolegaon, Kalimpong 734314
+                                                {siteConfig.name},<br />
+                                                {siteConfig.address}
                                             </p>
                                         </address>
                                     </div>

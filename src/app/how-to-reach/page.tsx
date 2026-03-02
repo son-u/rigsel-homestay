@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { FaTrain, FaPlane, FaCar, FaMapMarkerAlt, FaWhatsapp } from "react-icons/fa";
+import { siteConfig } from "@/lib/site";
 
 export default function HowToReach() {
     return (
@@ -79,10 +80,9 @@ export default function HowToReach() {
                                     <h2 className="font-serif italic font-bold text-2xl text-foreground">Our Location</h2>
                                 </div>
                                 <div>
-                                    <p className="text-xl font-medium text-foreground mb-1">Rigsel Homestay</p>
+                                    <p className="text-xl font-medium text-foreground mb-1">{siteConfig.name}</p>
                                     <p className="text-muted-foreground leading-relaxed">
-                                        Kaffer Gaon, Near Lolegaon, <br />
-                                        Kalimpong District, West Bengal 734314, India
+                                        {siteConfig.address}
                                     </p>
                                 </div>
                             </div>
@@ -172,10 +172,10 @@ export default function HowToReach() {
                                 <div className="relative z-10">
                                     <h4 className="font-serif italic font-medium text-3xl mb-4 drop-shadow-sm">Need a Cab?</h4>
                                     <p className="text-white/80 leading-relaxed mb-8 max-w-md text-sm sm:text-base">
-                                        Driving in the hills requires experience. We have a network of trusted local drivers who know the roads up to Kaffer Gaon intimately. Let us know 24 hours in advance, and we will happily arrange your pickup and drop-off.
+                                        driving in the hills requires experience. We have a network of trusted local drivers who know the roads up to Kaffer Gaon intimately. Let us know 24 hours in advance, and we will happily arrange your pickup and drop-off.
                                     </p>
                                     <a
-                                        href="https://wa.me/919000000000?text=Hello!%20I%20have%20a%20booking%20at%20Rigsel%20Homestay%20and%20would%20like%20assistance%20with%20arranging%20a%20pickup%20cab."
+                                        href={`https://wa.me/91${siteConfig.contact.primary}?text=Hello!%20I%20have%20a%20booking%20at%20Rigsel%20Homestay%20and%20would%20like%20assistance%20with%20arranging%20a%20pickup%20cab.`}
                                         target="_blank"
                                         rel="noreferrer"
                                         className="group inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-white text-primary rounded-full font-bold shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 w-full sm:w-auto"

@@ -4,9 +4,10 @@ import { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
+import { siteConfig } from "@/lib/site";
 
 // ─── Constants ────────────────────────────────────────────────────────────────
-const WHATSAPP_NUMBER = "919000000000";
+const WHATSAPP_NUMBER = `91${siteConfig.contact.primary}`;
 
 const ROOMS = [
     {
