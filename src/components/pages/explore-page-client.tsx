@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { FaClock, FaMapMarkerAlt } from "react-icons/fa";
+import { MdArrowForwardIos } from "react-icons/md";
 
 const ATTRACTIONS = [
     {
@@ -340,11 +341,15 @@ export default function ExplorePageClient() {
                         </p>
                         <Link
                             href="/contact"
-                            className="inline-flex items-center gap-2.5 px-8 py-4 bg-primary text-white font-bold rounded-full hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/30 transition-all duration-300"
+                            className="group relative inline-flex items-center justify-center gap-3 px-8 py-4 bg-primary hover:bg-primary/90 text-white font-bold rounded-full overflow-hidden transition-all duration-300 hover:scale-[1.03] hover:shadow-xl shadow-black/30 w-full sm:w-auto focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
                             aria-label="Book a stay at Rigsel Homestay"
                         >
-                            Book Your Stay
-                            <span aria-hidden="true">→</span>
+                            <span className="relative z-10 transition-colors duration-300">
+                                Book Your Stay
+                            </span>
+                            <span className="relative z-10 transition-transform duration-300 group-hover:translate-x-1 flex items-center" aria-hidden="true">
+                                <MdArrowForwardIos className="h-4 w-4" />
+                            </span>
                         </Link>
                     </motion.div>
                 </div>

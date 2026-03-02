@@ -9,8 +9,6 @@ export default function WhatsAppFAB() {
     const encodedMessage = encodeURIComponent(message);
 
     const handleWhatsAppClick = () => {
-        // We are opening it in a new tab to avoid breaking the user's flow
-        // On mobile, this will usually prompt to open the WhatsApp app
         window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, "_blank");
     };
 
