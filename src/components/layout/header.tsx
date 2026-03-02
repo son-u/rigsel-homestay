@@ -136,6 +136,17 @@ export default function Header() {
                                     <Link
                                         href={link.href}
                                         aria-current={isActive ? "page" : undefined}
+                                        onClick={(e) => {
+                                            if (pathname === "/" && link.href.startsWith("/#")) {
+                                                const targetId = link.href.split("#")[1];
+                                                const elem = document.getElementById(targetId);
+                                                if (elem) {
+                                                    e.preventDefault();
+                                                    elem.scrollIntoView({ behavior: "smooth" });
+                                                    window.history.pushState(null, "", link.href);
+                                                }
+                                            }
+                                        }}
                                         className="relative px-5 py-2.5 flex flex-col items-center justify-center group"
                                     >
                                         <span
@@ -232,7 +243,20 @@ export default function Header() {
                                                 key={link.name}
                                                 href={link.href}
                                                 aria-current={isActive ? "page" : undefined}
-                                                onClick={() => setIsOpen(false)}
+                                                onClick={(e) => {
+                                                    setIsOpen(false);
+                                                    if (pathname === "/" && link.href.startsWith("/#")) {
+                                                        const targetId = link.href.split("#")[1];
+                                                        const elem = document.getElementById(targetId);
+                                                        if (elem) {
+                                                            e.preventDefault();
+                                                            setTimeout(() => {
+                                                                elem.scrollIntoView({ behavior: "smooth" });
+                                                                window.history.pushState(null, "", link.href);
+                                                            }, 100);
+                                                        }
+                                                    }
+                                                }}
                                                 className={cn(
                                                     "relative px-5 py-4 rounded-2xl text-[15px] font-bold tracking-widest uppercase transition-all flex items-center group",
                                                     isActive

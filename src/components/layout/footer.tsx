@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { FaFacebook, FaInstagram, FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
 import { siteConfig } from "@/lib/site";
 
@@ -13,6 +16,20 @@ const QUICK_LINKS = [
 ];
 
 export default function Footer() {
+    const pathname = usePathname();
+
+    const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+        if (pathname === "/" && href.startsWith("/#")) {
+            const targetId = href.split("#")[1];
+            const elem = document.getElementById(targetId);
+            if (elem) {
+                e.preventDefault();
+                elem.scrollIntoView({ behavior: "smooth" });
+                window.history.pushState(null, "", href);
+            }
+        }
+    };
+
     return (
         <footer
             className="bg-[#F5F0E8] text-foreground/80 border-t border-border/30"
@@ -73,6 +90,7 @@ export default function Footer() {
                                 <li key={link.name}>
                                     <Link
                                         href={link.href}
+                                        onClick={(e) => handleSmoothScroll(e, link.href)}
                                         className="text-sm text-foreground/55 hover:text-primary transition-colors group flex items-center gap-2"
                                     >
                                         <span className="w-0 h-px bg-primary group-hover:w-3 transition-all duration-300" aria-hidden="true" />
