@@ -2,9 +2,11 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { siteConfig } from "@/lib/site";
+import { MdArrowForwardIos } from "react-icons/md";
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 const WHATSAPP_NUMBER = `91${siteConfig.contact.primary}`;
@@ -278,13 +280,18 @@ export default function RoomsSection() {
                                 </svg>
                                 Book via WhatsApp
                             </a>
-                            <a
-                                href="#contact"
+                            <Link
+                                href="/contact"
                                 aria-label={`Enquire about ${room.name} at Rigsel Homestay`}
-                                className="flex-1 flex justify-center items-center px-5 py-3.5 rounded-full border border-primary/40 text-primary hover:bg-primary/5 font-bold text-sm tracking-wide transition-all hover:scale-[1.02]"
+                                className="group relative flex-1 flex justify-center items-center gap-2 px-5 py-3.5 bg-primary hover:bg-primary/90 text-white font-bold text-sm tracking-wide rounded-full overflow-hidden transition-all duration-300 hover:scale-[1.03] hover:shadow-xl shadow-black/30 w-full sm:w-auto focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
                             >
-                                Enquire Now
-                            </a>
+                                <span className="relative z-10 transition-colors duration-300">
+                                    Enquire Now
+                                </span>
+                                <span className="relative z-10 transition-transform duration-300 group-hover:translate-x-1 flex items-center" aria-hidden="true">
+                                    <MdArrowForwardIos className="h-3.5 w-3.5" />
+                                </span>
+                            </Link>
                         </div>
                     </motion.div>
                 </div>
