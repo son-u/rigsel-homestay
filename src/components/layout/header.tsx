@@ -96,7 +96,6 @@ export default function Header() {
                         ? "shadow-xl shadow-black/10 py-3 border border-border/10 backdrop-blur-3xl bg-white/95"
                         : "shadow-lg shadow-black/5 py-4 border border-border/20"
                 )}
-                layout
             >
                 {/* Left: Logo */}
                 <Link
