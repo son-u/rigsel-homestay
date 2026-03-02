@@ -24,6 +24,7 @@ const NAV_LINKS = [
 export default function Header() {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
+    const [activeHash, setActiveHash] = useState("");
     const pathname = usePathname();
     const { scrollY } = useScroll();
 
@@ -34,6 +35,48 @@ export default function Header() {
     // Close sheet on route change
     useEffect(() => {
         setIsOpen(false);
+    }, [pathname]);
+
+    // Track active section based on scroll
+    useEffect(() => {
+        if (pathname !== "/") return;
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                const visibleEntries = entries.filter((entry) => entry.isIntersecting);
+                if (visibleEntries.length > 0) {
+                    // Get the most visible section (highest intersection ratio)
+                    const mostVisible = visibleEntries.reduce((prev, current) =>
+                        (prev.intersectionRatio > current.intersectionRatio) ? prev : current
+                    );
+                    setActiveHash(`#${mostVisible.target.id}`);
+                }
+            },
+            {
+                rootMargin: "-20% 0px -60% 0px", // Check middle of screen
+                threshold: [0, 0.25, 0.5, 0.75, 1],
+            }
+        );
+
+        // Observe sections
+        const aboutSection = document.getElementById("about-rigsel-homestay");
+        const roomsSection = document.getElementById("rooms-accommodation");
+
+        if (aboutSection) observer.observe(aboutSection);
+        if (roomsSection) observer.observe(roomsSection);
+
+        // Special case for top of page (Home)
+        const handleScroll = () => {
+            if (window.scrollY < 100) {
+                setActiveHash("");
+            }
+        };
+        window.addEventListener("scroll", handleScroll, { passive: true });
+
+        return () => {
+            observer.disconnect();
+            window.removeEventListener("scroll", handleScroll);
+        };
     }, [pathname]);
 
     return (
@@ -71,7 +114,23 @@ export default function Header() {
                 <nav className="hidden lg:flex flex-1 justify-center items-center" aria-label="Main Navigation">
                     <ul className="flex items-center gap-1 xl:gap-2">
                         {NAV_LINKS.map((link) => {
-                            const isActive = pathname === link.href;
+                            // If we are on home page and link has a hash, check activeHash
+                            // Otherwise fallback to pathname matching
+                            const isHomeHashLink = pathname === "/" && link.href.startsWith("/#");
+                            let isActive = false;
+
+                            if (isHomeHashLink) {
+                                // e.g. /#about-rigsel-homestay -> #about-rigsel-homestay
+                                const hash = link.href.substring(1);
+                                isActive = activeHash === hash;
+                            } else if (pathname === "/" && link.href === "/") {
+                                // Home logic: Active if no hash is active
+                                isActive = activeHash === "";
+                            } else {
+                                // Other pages
+                                isActive = pathname === link.href;
+                            }
+
                             return (
                                 <li key={link.name}>
                                     <Link
@@ -82,16 +141,16 @@ export default function Header() {
                                         <span
                                             className={cn(
                                                 "text-[14px] font-bold tracking-[0.15em] uppercase transition-colors duration-300",
-                                                isActive ? "text-primary" : "text-foreground/80 group-hover:text-secondary"
+                                                isActive ? "text-primary" : "text-foreground/80 group-hover:text-primary"
                                             )}
                                         >
                                             {link.name}
                                         </span>
-                                        {/* Active State / Hover Indicator (Blue) */}
+                                        {/* Active State / Hover Indicator (Green primary) */}
                                         <span
                                             className={cn(
                                                 "absolute -bottom-1 h-[3px] rounded-full transition-all duration-300",
-                                                isActive ? "w-1/2 bg-primary" : "w-0 bg-secondary group-hover:w-1/2"
+                                                isActive ? "w-1/2 bg-primary" : "w-0 bg-primary/70 group-hover:w-1/2"
                                             )}
                                         />
                                     </Link>
@@ -155,17 +214,30 @@ export default function Header() {
                             <div className="flex-1 overflow-y-auto p-6 flex flex-col gap-2">
                                 <nav className="flex flex-col gap-2" aria-label="Mobile Navigation">
                                     {NAV_LINKS.map((link) => {
-                                        const isActive = pathname === link.href;
+                                        // Mobile active state logic
+                                        const isHomeHashLink = pathname === "/" && link.href.startsWith("/#");
+                                        let isActive = false;
+
+                                        if (isHomeHashLink) {
+                                            const hash = link.href.substring(1);
+                                            isActive = activeHash === hash;
+                                        } else if (pathname === "/" && link.href === "/") {
+                                            isActive = activeHash === "";
+                                        } else {
+                                            isActive = pathname === link.href;
+                                        }
+
                                         return (
                                             <Link
                                                 key={link.name}
                                                 href={link.href}
                                                 aria-current={isActive ? "page" : undefined}
+                                                onClick={() => setIsOpen(false)}
                                                 className={cn(
                                                     "relative px-5 py-4 rounded-2xl text-[15px] font-bold tracking-widest uppercase transition-all flex items-center group",
                                                     isActive
                                                         ? "bg-primary/5 text-primary"
-                                                        : "text-foreground/80 hover:bg-secondary/10 hover:text-secondary"
+                                                        : "text-foreground/80 hover:bg-primary/5 hover:text-primary"
                                                 )}
                                             >
                                                 <span className="flex-1">{link.name}</span>
