@@ -99,7 +99,17 @@ export default function Header() {
                 layout
             >
                 {/* Left: Logo */}
-                <Link href="/" className="flex-shrink-0 hover:opacity-90 transition-opacity" aria-label="Rigsel Homestay Homepage">
+                <Link
+                    href="/"
+                    onClick={(e) => {
+                        if (pathname === "/") {
+                            e.preventDefault();
+                            window.scrollTo({ top: 0, behavior: "smooth" });
+                        }
+                    }}
+                    className="flex-shrink-0 hover:opacity-90 transition-opacity"
+                    aria-label="Rigsel Homestay Homepage"
+                >
                     <Image
                         src="/rigselhomestay.svg"
                         alt="Rigsel Homestay Logo"
@@ -137,13 +147,18 @@ export default function Header() {
                                         href={link.href}
                                         aria-current={isActive ? "page" : undefined}
                                         onClick={(e) => {
-                                            if (pathname === "/" && link.href.startsWith("/#")) {
-                                                const targetId = link.href.split("#")[1];
-                                                const elem = document.getElementById(targetId);
-                                                if (elem) {
+                                            if (pathname === "/") {
+                                                if (link.href === "/") {
                                                     e.preventDefault();
-                                                    elem.scrollIntoView({ behavior: "smooth" });
-                                                    window.history.pushState(null, "", link.href);
+                                                    window.scrollTo({ top: 0, behavior: "smooth" });
+                                                } else if (link.href.startsWith("/#")) {
+                                                    const targetId = link.href.split("#")[1];
+                                                    const elem = document.getElementById(targetId);
+                                                    if (elem) {
+                                                        e.preventDefault();
+                                                        elem.scrollIntoView({ behavior: "smooth" });
+                                                        window.history.pushState(null, "", link.href);
+                                                    }
                                                 }
                                             }
                                         }}
@@ -245,15 +260,22 @@ export default function Header() {
                                                 aria-current={isActive ? "page" : undefined}
                                                 onClick={(e) => {
                                                     setIsOpen(false);
-                                                    if (pathname === "/" && link.href.startsWith("/#")) {
-                                                        const targetId = link.href.split("#")[1];
-                                                        const elem = document.getElementById(targetId);
-                                                        if (elem) {
+                                                    if (pathname === "/") {
+                                                        if (link.href === "/") {
                                                             e.preventDefault();
                                                             setTimeout(() => {
-                                                                elem.scrollIntoView({ behavior: "smooth" });
-                                                                window.history.pushState(null, "", link.href);
+                                                                window.scrollTo({ top: 0, behavior: "smooth" });
                                                             }, 100);
+                                                        } else if (link.href.startsWith("/#")) {
+                                                            const targetId = link.href.split("#")[1];
+                                                            const elem = document.getElementById(targetId);
+                                                            if (elem) {
+                                                                e.preventDefault();
+                                                                setTimeout(() => {
+                                                                    elem.scrollIntoView({ behavior: "smooth" });
+                                                                    window.history.pushState(null, "", link.href);
+                                                                }, 100);
+                                                            }
                                                         }
                                                     }
                                                 }}

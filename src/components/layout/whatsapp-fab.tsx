@@ -17,10 +17,12 @@ export default function WhatsAppFAB() {
     return (
         <button
             onClick={handleWhatsAppClick}
-            className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg transition-transform hover:scale-110 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-[#25D366]/50"
+            className="group fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg transition-transform hover:scale-110 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-[#25D366]/50"
             aria-label="Contact us on WhatsApp"
         >
-            <FaWhatsapp className="h-7 w-7" />
+            <span className="absolute -inset-2 rounded-full border-2 border-[#25D366] opacity-0 animate-[ripple_2s_infinite] group-hover:animate-none" />
+            <span className="absolute -inset-4 rounded-full border-2 border-[#25D366] opacity-0 animate-[ripple_2s_infinite_1s] group-hover:animate-none" />
+            <FaWhatsapp className="relative z-10 h-7 w-7" />
         </button>
     );
 }

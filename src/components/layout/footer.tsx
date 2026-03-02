@@ -42,7 +42,16 @@ export default function Footer() {
                     {/* ── Col 1: Brand & Description ── */}
                     <div className="flex flex-col gap-6">
                         {/* Logo */}
-                        <Link href="/" aria-label="Rigsel Homestay — back to homepage">
+                        <Link
+                            href="/"
+                            onClick={(e) => {
+                                if (pathname === "/") {
+                                    e.preventDefault();
+                                    window.scrollTo({ top: 0, behavior: "smooth" });
+                                }
+                            }}
+                            aria-label="Rigsel Homestay — back to homepage"
+                        >
                             <Image
                                 src="/rigselhomestay.svg"
                                 alt="Rigsel Homestay logo"
