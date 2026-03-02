@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { MdArrowForwardIos } from "react-icons/md";
 
 export default function ContactTeaser() {
     return (
@@ -67,8 +68,8 @@ export default function ContactTeaser() {
                         <span className="relative z-10 transition-colors duration-300">
                             Plan Your Stay Today
                         </span>
-                        <span className="relative z-10 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true">
-                            →
+                        <span className="relative z-10 transition-transform duration-300 group-hover:translate-x-1 flex items-center" aria-hidden="true">
+                            <MdArrowForwardIos className="h-4 w-4" />
                         </span>
                     </Link>
                 </motion.div>
