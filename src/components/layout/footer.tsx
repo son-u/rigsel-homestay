@@ -4,7 +4,7 @@ import { FaFacebook, FaInstagram, FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from 
 import { siteConfig } from "@/lib/site";
 
 const QUICK_LINKS = [
-    { name: "About Us", href: "/about" },
+    { name: "About Us", href: "/#about-rigsel-homestay" },
     { name: "Our Rooms", href: "/#rooms-accommodation" },
     { name: "Explore", href: "/explore" },
     { name: "Gallery", href: "/gallery" },
