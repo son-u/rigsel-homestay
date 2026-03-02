@@ -5,6 +5,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/lib/site";
+import { MdArrowForwardIos } from "react-icons/md";
 import HeroSlider from "@/components/sections/hero-slider";
 import RoomsSection from "@/components/sections/rooms-section";
 import FoodSection from "@/components/sections/food-section";
@@ -236,9 +237,14 @@ export default function Home() {
                 <Link
                   href="/contact"
                   aria-label="Book your stay at Rigsel Homestay, Kalimpong"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary hover:bg-primary/90 text-white font-bold text-sm tracking-wide shadow-lg shadow-primary/20 transition-all hover:scale-[1.03]"
+                  className="group relative inline-flex items-center justify-center gap-3 px-8 py-4 bg-primary hover:bg-primary/90 text-white font-bold rounded-full overflow-hidden transition-all duration-300 hover:scale-[1.03] hover:shadow-xl shadow-black/30 w-full sm:w-auto focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
                 >
-                  Book a Stay
+                  <span className="relative z-10 transition-colors duration-300">
+                    Book a Stay
+                  </span>
+                  <span className="relative z-10 transition-transform duration-300 group-hover:translate-x-1 flex items-center" aria-hidden="true">
+                    <MdArrowForwardIos className="h-4 w-4" />
+                  </span>
                 </Link>
               </div>
             </motion.div>

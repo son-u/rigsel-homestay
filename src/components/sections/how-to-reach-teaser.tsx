@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { FaMapMarkerAlt } from "react-icons/fa";
+import { MdArrowForwardIos } from "react-icons/md";
 
 export default function HowToReachTeaser() {
     return (
@@ -57,14 +58,13 @@ export default function HowToReachTeaser() {
                         {/* CTA */}
                         <Link
                             href="/how-to-reach"
-                            className="group relative inline-flex items-center gap-3 px-8 py-4 bg-white text-primary font-bold rounded-full overflow-hidden transition-transform hover:-translate-y-0.5 hover:shadow-[0_8px_30px_rgb(255,255,255,0.15)]"
+                            className="group relative inline-flex items-center gap-3 px-8 py-4 bg-primary hover:bg-primary/90 text-white font-bold rounded-full overflow-hidden transition-all duration-300 hover:scale-[1.03] hover:shadow-xl shadow-black/30 w-full sm:w-auto focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
                         >
-                            <div className="absolute inset-0 bg-secondary translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300 ease-in-out" />
-                            <span className="relative z-10 group-hover:text-white transition-colors duration-300">
+                            <span className="relative z-10 transition-colors duration-300">
                                 View Travel Guide
                             </span>
-                            <span className="relative z-10 group-hover:text-white transition-colors duration-300 group-hover:translate-x-1" aria-hidden="true">
-                                →
+                            <span className="relative z-10 transition-transform duration-300 group-hover:translate-x-1 flex items-center" aria-hidden="true">
+                                <MdArrowForwardIos className="h-4 w-4" />
                             </span>
                         </Link>
 

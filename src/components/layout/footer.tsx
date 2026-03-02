@@ -97,12 +97,20 @@ export default function Footer() {
                             </div>
                             <div className="flex items-center gap-3 text-sm text-foreground/60">
                                 <FaPhoneAlt className="flex-shrink-0 text-primary" size={13} />
-                                <a
-                                    href={`tel:+91${siteConfig.contact.primary}`}
-                                    className="hover:text-primary transition-colors"
-                                >
-                                    +91 {siteConfig.contact.primary.slice(0, 5)} {siteConfig.contact.primary.slice(5)}
-                                </a>
+                                <div className="flex flex-col gap-1">
+                                    <a
+                                        href={`tel:+91${siteConfig.contact.primary}`}
+                                        className="hover:text-primary transition-colors"
+                                    >
+                                        +91 {siteConfig.contact.primary.slice(0, 5)} {siteConfig.contact.primary.slice(5)}
+                                    </a>
+                                    <a
+                                        href={`tel:+91${siteConfig.contact.secondary}`}
+                                        className="hover:text-primary transition-colors"
+                                    >
+                                        +91 {siteConfig.contact.secondary.slice(0, 5)} {siteConfig.contact.secondary.slice(5)}
+                                    </a>
+                                </div>
                             </div>
                             <div className="flex items-center gap-3 text-sm text-foreground/60">
                                 <FaEnvelope className="flex-shrink-0 text-primary" size={13} />

@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence, type Variants, type Transition } from "framer-motion";
+import { MdArrowForwardIos } from "react-icons/md";
 
 // ─── Slide Data ───────────────────────────────────────────────────────────────
 const SLIDES = [
@@ -177,9 +178,14 @@ export default function HeroSlider() {
                                 <Link
                                     href="/contact"
                                     aria-label="Book your stay at Rigsel Homestay"
-                                    className="inline-flex items-center px-8 py-4 rounded-full bg-primary hover:bg-primary/90 text-white font-bold text-sm sm:text-[15px] tracking-wide shadow-xl shadow-black/30 transition-all hover:scale-[1.03] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                                    className="group relative inline-flex items-center justify-center gap-3 px-8 py-4 bg-primary hover:bg-primary/90 text-white font-bold rounded-full overflow-hidden transition-all duration-300 hover:scale-[1.03] hover:shadow-xl shadow-black/30 w-full sm:w-auto focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
                                 >
-                                    Book Your Stay
+                                    <span className="relative z-10 transition-colors duration-300">
+                                        Book Your Stay
+                                    </span>
+                                    <span className="relative z-10 transition-transform duration-300 group-hover:translate-x-1 flex items-center" aria-hidden="true">
+                                        <MdArrowForwardIos className="h-4 w-4" />
+                                    </span>
                                 </Link>
                                 <Link
                                     href="/explore"
