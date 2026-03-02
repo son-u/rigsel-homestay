@@ -62,13 +62,12 @@ export default function ContactTeaser() {
 
                     <Link
                         href="/contact"
-                        className="group relative inline-flex items-center justify-center gap-3 px-8 py-4 bg-secondary text-white font-bold rounded-full overflow-hidden transition-all hover:-translate-y-1 hover:shadow-[0_8px_25px_rgba(13,165,233,0.3)] w-full sm:w-auto"
+                        className="group relative inline-flex items-center justify-center gap-3 px-8 py-4 bg-primary hover:bg-primary/90 text-white font-bold rounded-full overflow-hidden transition-all duration-300 hover:scale-[1.03] hover:shadow-xl shadow-black/30 w-full sm:w-auto focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
                     >
-                        <div className="absolute inset-0 bg-white translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300 ease-in-out" />
-                        <span className="relative z-10 group-hover:text-primary transition-colors duration-300">
+                        <span className="relative z-10 transition-colors duration-300">
                             Plan Your Stay Today
                         </span>
-                        <span className="relative z-10 group-hover:text-primary transition-colors duration-300 group-hover:translate-x-1" aria-hidden="true">
+                        <span className="relative z-10 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true">
                             →
                         </span>
                     </Link>
