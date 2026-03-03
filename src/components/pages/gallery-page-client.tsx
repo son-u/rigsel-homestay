@@ -4,12 +4,41 @@ import { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 
+// ── Shimmer skeleton for loading images ───────────────────────────────────────
+function GalleryImage({ src, alt }: { src: string; alt: string }) {
+    const [loaded, setLoaded] = useState(false);
+
+    return (
+        <>
+            {/* Shimmer shown until image loads */}
+            {!loaded && (
+                <div
+                    className="absolute inset-0 rounded-2xl"
+                    style={{
+                        background: "linear-gradient(90deg, #e8e0d6 25%, #f0ebe4 50%, #e8e0d6 75%)",
+                        backgroundSize: "800px 100%",
+                        animation: "shimmer 1.6s ease-in-out infinite",
+                    }}
+                    aria-hidden="true"
+                />
+            )}
+            <Image
+                src={src}
+                alt={alt}
+                fill
+                className={`object-cover group-hover:scale-105 transition-all duration-700 ease-out ${loaded ? "opacity-100" : "opacity-0"}`}
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                onLoad={() => setLoaded(true)}
+            />
+        </>
+    );
+}
+
 // ── Category definitions ──────────────────────────────────────────────────────
-const CATEGORIES = ["All", "Rooms", "Food", "Nature & Views"] as const;
+const CATEGORIES = ["All", "Homestay", "Rooms", "Food", "Nature & Views"] as const;
 type Category = (typeof CATEGORIES)[number];
 
-// ── Gallery data using available public folder images ─────────────────────────
-// Will be replaced with actual gallery images later
+// ── Gallery data ──────────────────────────────────────────────────────────────
 const GALLERY_IMAGES: {
     id: number;
     category: Exclude<Category, "All">;
@@ -17,82 +46,168 @@ const GALLERY_IMAGES: {
     alt: string;
     span?: "tall" | "wide" | "featured";
 }[] = [
+        // ── Nature & Views ────────────────────────────────────────────────────
         {
             id: 1,
             category: "Nature & Views",
-            src: "/hero-1.webp",
-            alt: "Panoramic valley view from Rigsel Homestay, Kaffer Gaon, Kalimpong",
+            src: "/kangchenjunga-peak-view-from-rigsel-homestay-kalimpong.webp",
+            alt: "Kangchenjunga peak seen from Rigsel Homestay, Kaffer Gaon, Kalimpong",
             span: "featured",
         },
         {
             id: 2,
-            category: "Rooms",
-            src: "/rigsel-room-double-bed-type-a-1.webp",
-            alt: "Double bed room Type A at Rigsel Homestay, Kalimpong",
+            category: "Nature & Views",
+            src: "/sunny-valley-view-from-rigsel-homestay-kalimpong.webp",
+            alt: "Sunny valley panorama from Rigsel Homestay, Kaffer Gaon, Kalimpong",
+            span: "wide",
         },
         {
             id: 3,
-            category: "Rooms",
-            src: "/rigsel-room-double-bed-type-b-1.webp",
-            alt: "Double bed room Type B at Rigsel Homestay, Kaffer Gaon",
+            category: "Nature & Views",
+            src: "/rigsel-homestay-foggy-valley-view-kalimpong.webp",
+            alt: "Misty foggy valley view from Rigsel Homestay, Kalimpong hills",
             span: "tall",
         },
         {
             id: 4,
-            category: "Food",
-            src: "/rigsel-farm-fresh-organic-meal-kalimpong.webp",
-            alt: "Farm-fresh organic meal at Rigsel Homestay, Kalimpong",
+            category: "Nature & Views",
+            src: "/rigsel-homestay-cloudy-mountain-view-kalimpong.webp",
+            alt: "Dramatic cloudy mountain view surrounding Rigsel Homestay, Kalimpong",
         },
         {
             id: 5,
             category: "Nature & Views",
-            src: "/hero-2.webp",
-            alt: "Misty morning view of the Himalayan foothills from Kaffer Gaon",
-            span: "wide",
+            src: "/rigsel-homestay-mountain-landscape-kalimpong.webp",
+            alt: "Lush green mountain landscape around Rigsel Homestay, Kaffer Gaon",
         },
         {
             id: 6,
-            category: "Rooms",
-            src: "/rigsel-room-double-bed-type-a-2.webp",
-            alt: "Cozy double room interior at Rigsel Homestay",
+            category: "Nature & Views",
+            src: "/rigsel-homestay-hill-view-kaffer-gaon-kalimpong.webp",
+            alt: "Rolling hill views and green terraces near Rigsel Homestay, Kaffer Gaon",
         },
         {
             id: 7,
-            category: "Food",
-            src: "/rigsel-gorkhali-authentic-homemade-food.webp",
-            alt: "Authentic Gorkhali home-cooked meal at Rigsel Homestay",
-        },
-        {
-            id: 8,
-            category: "Rooms",
-            src: "/rigsel-room-family-four-bed.webp",
-            alt: "Family four-bed room at Rigsel Homestay, Kaffer Gaon",
+            category: "Nature & Views",
+            src: "/rigsel-homestay-surroundings-kaffer-gaon.webp",
+            alt: "Natural surroundings and village landscape at Kaffer Gaon, Kalimpong",
             span: "wide",
         },
         {
-            id: 9,
+            id: 8,
             category: "Nature & Views",
-            src: "/hero-3.webp",
-            alt: "Lush green landscapes surrounding Rigsel Homestay, Kalimpong",
-            span: "tall",
+            src: "/rigsel-homestay-terrace-garden-kaffer-gaon.webp",
+            alt: "Terrace garden and green landscape at Rigsel Homestay, Kaffer Gaon",
+        },
+        // ── Homestay ─────────────────────────────────────────────────────────
+        {
+            id: 9,
+            category: "Homestay",
+            src: "/rigsel-homestay-exterior-kaffer-gaon-kalimpong.webp",
+            alt: "Exterior view of Rigsel Homestay property in Kaffer Gaon, Kalimpong",
+            span: "wide",
         },
         {
             id: 10,
-            category: "Food",
-            src: "/rigsel-homestay-traditional-gorkha-cuisine.webp",
-            alt: "Traditional Gorkha cuisine served at Rigsel Homestay",
+            category: "Homestay",
+            src: "/rigsel-homestay-building-view-kalimpong.webp",
+            alt: "Rigsel Homestay building nestled in the hills of Kalimpong",
         },
         {
             id: 11,
-            category: "Rooms",
-            src: "/rigsel-room-double-bed-type-b-2.webp",
-            alt: "Room Type B with mountain view at Rigsel Homestay",
+            category: "Homestay",
+            src: "/rigsel-homestay-property-kaffer-gaon.webp",
+            alt: "Rigsel Homestay property set amid serene Kaffer Gaon village",
+            span: "tall",
         },
         {
             id: 12,
+            category: "Homestay",
+            src: "/rigsel-homestay-accommodation-kalimpong.webp",
+            alt: "Rigsel Homestay accommodation overview, Kalimpong Himalayan hills",
+        },
+        {
+            id: 13,
+            category: "Homestay",
+            src: "/rigsel-homestay-entrance-signage-kaffer-gaon.webp",
+            alt: "Entrance signage of Rigsel Homestay at Kaffer Gaon, Kalimpong",
+        },
+        {
+            id: 14,
+            category: "Homestay",
+            src: "/rigsel-homestay-happy-guest-kaffer-gaon-1.webp",
+            alt: "Happy guests enjoying their stay at Rigsel Homestay, Kaffer Gaon",
+        },
+        {
+            id: 15,
+            category: "Homestay",
+            src: "/rigsel-homestay-happy-guest-kaffer-gaon-2.webp",
+            alt: "Guests relaxing with scenic views at Rigsel Homestay, Kalimpong",
+            span: "wide",
+        },
+        {
+            id: 16,
+            category: "Homestay",
+            src: "/rigsel-homestay-happy-guest-kaffer-gaon-3.webp",
+            alt: "Guests experiencing Himalayan village hospitality at Rigsel Homestay",
+        },
+        // ── Rooms ────────────────────────────────────────────────────────────
+        {
+            id: 17,
+            category: "Rooms",
+            src: "/rigsel-room-double-bed-type-a-1.webp",
+            alt: "Double bed room Type A at Rigsel Homestay, Kaffer Gaon, Kalimpong",
+        },
+        {
+            id: 18,
+            category: "Rooms",
+            src: "/rigsel-room-double-bed-type-b-1.webp",
+            alt: "Double bed room Type B at Rigsel Homestay, Kalimpong",
+            span: "tall",
+        },
+        {
+            id: 19,
+            category: "Rooms",
+            src: "/rigsel-room-double-bed-type-a-2.webp",
+            alt: "Cozy double room interior with warm decor at Rigsel Homestay",
+        },
+        {
+            id: 20,
+            category: "Rooms",
+            src: "/rigsel-room-family-four-bed.webp",
+            alt: "Family four-bed room at Rigsel Homestay, ideal for group stays",
+            span: "wide",
+        },
+        {
+            id: 21,
+            category: "Rooms",
+            src: "/rigsel-room-double-bed-type-b-2.webp",
+            alt: "Room Type B with mountain view at Rigsel Homestay, Kaffer Gaon",
+        },
+        {
+            id: 22,
             category: "Rooms",
             src: "/rigsel-room-washroom-facility.webp",
-            alt: "Clean washroom facility at Rigsel Homestay, Kalimpong",
+            alt: "Clean attached washroom facility at Rigsel Homestay, Kalimpong",
+        },
+        // ── Food ─────────────────────────────────────────────────────────────
+        {
+            id: 23,
+            category: "Food",
+            src: "/rigsel-farm-fresh-organic-meal-kalimpong.webp",
+            alt: "Farm-fresh organic home-cooked meal at Rigsel Homestay, Kalimpong",
+        },
+        {
+            id: 24,
+            category: "Food",
+            src: "/rigsel-gorkhali-authentic-homemade-food.webp",
+            alt: "Authentic Gorkhali home-cooked meal served at Rigsel Homestay",
+        },
+        {
+            id: 25,
+            category: "Food",
+            src: "/rigsel-homestay-traditional-gorkha-cuisine.webp",
+            alt: "Traditional Gorkha cuisine prepared fresh at Rigsel Homestay",
         },
     ];
 
@@ -276,13 +391,7 @@ export default function GalleryPageClient() {
                                         e.key === "Enter" && setLightboxImage(image)
                                     }
                                 >
-                                    <Image
-                                        src={image.src}
-                                        alt={image.alt}
-                                        fill
-                                        className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                                    />
+                                    <GalleryImage src={image.src} alt={image.alt} />
                                     {/* Hover overlay */}
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
                                         <span className="inline-flex items-center self-start gap-1.5 text-xs font-bold tracking-widest uppercase text-white/80 bg-white/10 backdrop-blur-sm border border-white/15 rounded-full px-3 py-1 mb-2 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
