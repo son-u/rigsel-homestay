@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { FaFacebook, FaInstagram, FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
+import { AiOutlineCode } from "react-icons/ai";
 import { siteConfig } from "@/lib/site";
 
 const QUICK_LINKS = [
@@ -164,6 +165,16 @@ export default function Footer() {
                         <Link href="/privacy" className="hover:text-primary transition-colors">Privacy Policy</Link>
                         <Link href="/terms" className="hover:text-primary transition-colors">Terms of Service</Link>
                     </div>
+                    <a
+                        href="https://son-u.vercel.app/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1.5 text-sm font-semibold text-foreground/50 hover:text-primary transition-colors font-serif italic mt-2 sm:mt-0 sm:ml-auto"
+                        aria-label="Developer Portfolio - Sonu"
+                    >
+                        <AiOutlineCode size={16} aria-hidden="true" />
+                        Coded by Sonu
+                    </a>
                 </div>
             </div>
         </footer>

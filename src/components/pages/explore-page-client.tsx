@@ -254,7 +254,13 @@ export default function ExplorePageClient() {
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
                     {/* Section header */}
                     <div className="flex flex-col items-center gap-3 mb-14 text-center">
-                        <p className="text-xs font-bold tracking-widest uppercase text-secondary">
+                        <p
+                            className="inline-flex items-center text-xs font-bold tracking-[0.22em] uppercase text-secondary px-4 py-1.5 rounded-full"
+                            style={{
+                                background: "rgba(13, 165, 233, 0.1)",
+                                border: "1px solid rgba(13, 165, 233, 0.25)",
+                            }}
+                        >
                             Within Easy Reach
                         </p>
                         <h2
@@ -286,7 +292,13 @@ export default function ExplorePageClient() {
             <section className="py-20 sm:py-28 bg-[#1A1F1C] text-white" aria-labelledby="season-heading">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
                     <div className="flex flex-col items-center gap-3 mb-14 text-center">
-                        <p className="text-xs font-bold tracking-widest uppercase text-secondary">
+                        <p
+                            className="inline-flex items-center text-xs font-bold tracking-[0.22em] uppercase text-secondary px-4 py-1.5 rounded-full"
+                            style={{
+                                background: "rgba(13, 165, 233, 0.1)",
+                                border: "1px solid rgba(13, 165, 233, 0.25)",
+                            }}
+                        >
                             Plan Your Visit
                         </p>
                         <h2

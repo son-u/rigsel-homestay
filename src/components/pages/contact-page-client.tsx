@@ -125,7 +125,7 @@ export default function ContactPageClient() {
                                                 <FormItem>
                                                     <FormLabel className="font-semibold text-foreground/80">Full Name</FormLabel>
                                                     <FormControl>
-                                                        <Input placeholder="John Doe" {...field} className="bg-muted/30 border-border/50 h-12 focus-visible:ring-primary/30 focus-visible:ring-2" />
+                                                        <Input placeholder="Rahul Sharma" {...field} className="bg-muted/30 border-border/50 h-12 focus-visible:ring-primary/30 focus-visible:ring-2" />
                                                     </FormControl>
                                                     <FormMessage />
                                                 </FormItem>
@@ -210,7 +210,15 @@ export default function ContactPageClient() {
                         >
                             {/* Direct Contact Cards */}
                             <div>
-                                <p className="text-xs font-bold tracking-widest uppercase text-secondary mb-3">Reach Out</p>
+                                <p
+                                    className="inline-flex self-start items-center text-xs font-bold tracking-[0.22em] uppercase text-secondary px-4 py-1.5 rounded-full mb-3"
+                                    style={{
+                                        background: "rgba(13, 165, 233, 0.1)",
+                                        border: "1px solid rgba(13, 165, 233, 0.25)",
+                                    }}
+                                >
+                                    Reach Out
+                                </p>
                                 <h3 className="font-serif italic font-medium text-4xl text-foreground leading-tight mb-8">Direct Contact</h3>
                                 <div className="flex flex-col gap-5">
                                     {/* Phone */}
@@ -257,7 +265,15 @@ export default function ContactPageClient() {
 
                             {/* FAQ */}
                             <div>
-                                <p className="text-xs font-bold tracking-widest uppercase text-secondary mb-3">Good to Know</p>
+                                <p
+                                    className="inline-flex self-start items-center text-xs font-bold tracking-[0.22em] uppercase text-secondary px-4 py-1.5 rounded-full mb-3"
+                                    style={{
+                                        background: "rgba(13, 165, 233, 0.1)",
+                                        border: "1px solid rgba(13, 165, 233, 0.25)",
+                                    }}
+                                >
+                                    Good to Know
+                                </p>
                                 <h3 className="font-serif italic font-medium text-4xl text-foreground leading-tight mb-8">Common Questions</h3>
                                 <div className="bg-white rounded-2xl border border-border/40 shadow-sm p-6 sm:p-8">
                                     <Accordion type="single" collapsible className="w-full">

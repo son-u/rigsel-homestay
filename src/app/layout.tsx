@@ -33,8 +33,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${poppins.variable} ${cormorant.variable} antialiased min-h-screen flex flex-col`}>
+    <html lang="en" className="overflow-x-hidden">
+      <body className={`${poppins.variable} ${cormorant.variable} antialiased min-h-screen flex flex-col overflow-x-hidden`}>
         <LenisProvider>
           <Header />
           <main className="flex-1">

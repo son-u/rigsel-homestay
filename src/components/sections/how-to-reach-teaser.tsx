@@ -58,7 +58,7 @@ export default function HowToReachTeaser() {
                         {/* CTA */}
                         <Link
                             href="/how-to-reach"
-                            className="group relative inline-flex items-center gap-3 px-8 py-4 bg-primary hover:bg-primary/90 text-white font-bold rounded-full overflow-hidden transition-all duration-300 hover:scale-[1.03] hover:shadow-xl shadow-black/30 w-full sm:w-auto focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                            className="group relative inline-flex items-center justify-center gap-3 px-8 py-4 bg-primary hover:bg-primary/90 text-white font-bold rounded-full overflow-hidden transition-all duration-300 hover:scale-[1.03] hover:shadow-xl shadow-black/30 w-full sm:w-auto focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
                         >
                             <span className="relative z-10 transition-colors duration-300">
                                 View Travel Guide

@@ -174,23 +174,23 @@ export default function HeroSlider() {
                             </motion.p>
 
                             {/* CTAs */}
-                            <motion.div variants={itemVariants} className="flex flex-wrap gap-3 mt-2">
+                            <motion.div variants={itemVariants} className="flex w-full sm:w-auto gap-3 mt-2 sm:mt-4">
                                 <Link
                                     href="/contact"
                                     aria-label="Book your stay at Rigsel Homestay"
-                                    className="group relative inline-flex items-center justify-center gap-3 px-8 py-4 bg-primary hover:bg-primary/90 text-white font-bold rounded-full overflow-hidden transition-all duration-300 hover:scale-[1.03] hover:shadow-xl shadow-black/30 w-full sm:w-auto focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                                    className="group relative flex-1 sm:flex-none flex items-center justify-center gap-2 sm:gap-3 px-4 sm:px-8 py-3.5 sm:py-4 bg-primary hover:bg-primary/90 text-white font-bold rounded-full overflow-hidden transition-all duration-300 hover:scale-[1.03] hover:shadow-xl shadow-black/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white text-sm sm:text-base"
                                 >
-                                    <span className="relative z-10 transition-colors duration-300">
-                                        Book Your Stay
+                                    <span className="relative z-10 transition-colors duration-300 whitespace-nowrap">
+                                        Book Stay
                                     </span>
                                     <span className="relative z-10 transition-transform duration-300 group-hover:translate-x-1 flex items-center" aria-hidden="true">
-                                        <MdArrowForwardIos className="h-4 w-4" />
+                                        <MdArrowForwardIos className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                                     </span>
                                 </Link>
                                 <Link
                                     href="/explore"
                                     aria-label="Explore Kaffer Gaon and nearby attractions"
-                                    className="inline-flex items-center px-8 py-4 rounded-full border border-white/40 bg-white/10 backdrop-blur-sm text-white font-bold text-sm sm:text-[15px] tracking-wide transition-all hover:bg-white/20 hover:scale-[1.03] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                                    className="flex-1 sm:flex-none flex items-center justify-center px-4 sm:px-8 py-3.5 sm:py-4 rounded-full border border-white/40 bg-white/10 backdrop-blur-sm text-white font-bold text-sm sm:text-base tracking-wide transition-all hover:bg-white/20 hover:scale-[1.03] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white whitespace-nowrap"
                                 >
                                     Explore
                                 </Link>
