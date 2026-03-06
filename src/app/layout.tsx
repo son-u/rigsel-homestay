@@ -43,7 +43,7 @@ export default function RootLayout({
           <WhatsAppFAB />
           <Footer />
         </LenisProvider>
-        <GoogleAnalytics gaId="G-XXXXXXXXXX" />
+        <GoogleAnalytics gaId="G-J21VL5HEFN" />
       </body>
     </html>
   );

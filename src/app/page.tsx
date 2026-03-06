@@ -16,15 +16,15 @@ import ContactTeaser from "@/components/sections/contact-teaser";
 export default function Home() {
   return (
     <div className="flex flex-col w-full">
-      {/* Hero Section */}
+      
       <HeroSlider />
 
-      {/* Quick Trust Signals Bar */}
+      
       <section
         aria-label="Rigsel Homestay at a Glance — Key highlights and trust signals"
         className="relative overflow-hidden py-12 sm:py-16 bg-[#FFFAF1] border-y border-border/60"
       >
-        {/* Subtle texture overlay */}
+       
         <div
           className="absolute inset-0 opacity-[0.03] pointer-events-none"
           style={{ backgroundImage: "radial-gradient(circle, #126439 1px, transparent 1px)", backgroundSize: "24px 24px" }}
@@ -40,7 +40,7 @@ export default function Home() {
             variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.12 } } }}
             aria-label="Trust highlights — Rigsel Homestay statistics"
           >
-            {/* ── Stat 1: Guest Rating ── */}
+            
             <motion.div
               variants={{ hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6 } } }}
               className="flex flex-col items-center text-center px-4 py-6 sm:py-8 border-r border-border/60 last:border-r-0"
@@ -60,7 +60,7 @@ export default function Home() {
               </dd>
             </motion.div>
 
-            {/* ── Stat 2: Altitude ── */}
+            
             <motion.div
               variants={{ hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6 } } }}
               className="flex flex-col items-center text-center px-4 py-6 sm:py-8 border-r border-border/60 last:border-r-0"
@@ -78,7 +78,7 @@ export default function Home() {
               </dd>
             </motion.div>
 
-            {/* ── Stat 3: Organic Food ── */}
+            
             <motion.div
               variants={{ hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6 } } }}
               className="flex flex-col items-center text-center px-4 py-6 sm:py-8 border-r border-border/60 last:border-r-0"
@@ -97,7 +97,7 @@ export default function Home() {
               </dd>
             </motion.div>
 
-            {/* ── Stat 4: Village Experience ── */}
+            
             <motion.div
               variants={{ hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6 } } }}
               className="flex flex-col items-center text-center px-4 py-6 sm:py-8 col-span-2 lg:col-span-1 border-t border-border/60 lg:border-t-0"
@@ -119,14 +119,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Welcome / About Section */}
+     
       <section
         id="about-rigsel-homestay"
         aria-labelledby="welcome-heading"
         className="relative py-20 sm:py-28 overflow-hidden"
         style={{ background: "linear-gradient(160deg, #FFFAF1 60%, #E9FBF2 100%)" }}
       >
-        {/* Decorative blurred blob */}
+        
         <div
           className="absolute -top-24 -right-24 w-96 h-96 rounded-full opacity-20 pointer-events-none blur-3xl"
           style={{ background: "radial-gradient(circle, #0DA5E9 0%, transparent 70%)" }}
@@ -136,7 +136,7 @@ export default function Home() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 xl:gap-20 items-center">
 
-            {/* ── Image Column ── */}
+            
             <motion.div
               initial={{ opacity: 0, x: -40 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -144,7 +144,7 @@ export default function Home() {
               transition={{ duration: 0.85, ease: "easeOut" }}
               className="relative order-2 lg:order-1"
             >
-              {/* Main Image */}
+             
               <div className="relative h-[420px] sm:h-[520px] lg:h-[580px] w-full rounded-[2rem] overflow-hidden shadow-2xl shadow-primary/15">
                 <Image
                   src="/rigsel-homestay-kaffer-gaon-kalimpong.webp"
@@ -153,7 +153,7 @@ export default function Home() {
                   className="object-cover object-center hover:scale-[1.04] transition-transform duration-[1200ms]"
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
-                {/* Bottom image caption overlay */}
+                
                 <div className="absolute bottom-0 inset-x-0 p-5 bg-gradient-to-t from-black/60 to-transparent">
                   <p className="text-white/80 text-xs font-bold tracking-[0.18em] uppercase">
                     Kaffer Gaon · Kalimpong · West Bengal
@@ -161,7 +161,7 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Floating accent card */}
+             
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -181,7 +181,7 @@ export default function Home() {
               </motion.div>
             </motion.div>
 
-            {/* ── Text Column ── */}
+            
             <motion.div
               initial={{ opacity: 0, x: 40 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -189,7 +189,7 @@ export default function Home() {
               transition={{ duration: 0.85, ease: "easeOut" }}
               className="order-1 lg:order-2 flex flex-col gap-6"
             >
-              {/* Eyebrow — same pill style as Hero */}
+              
               <p
                 className="inline-flex self-start items-center text-xs font-bold tracking-[0.22em] uppercase text-secondary px-4 py-1.5 rounded-full"
                 style={{
@@ -200,7 +200,7 @@ export default function Home() {
                 Welcome to Rigsel Homestay
               </p>
 
-              {/* Main Heading — SEO h2 since h1 is on hero */}
+             
               <h2
                 id="welcome-heading"
                 className="font-serif italic font-medium text-4xl sm:text-5xl lg:text-[3.25rem] text-foreground leading-[1.1]"
@@ -209,12 +209,12 @@ export default function Home() {
                 <span className="text-primary">Embrace the silence.</span>
               </h2>
 
-              {/* Description */}
+             
               <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-xl">
                 Hosted by <strong className="font-serif text-xl text-foreground font-semibold italic">{siteConfig.hosts}</strong>, Far from crowded tourist trails, <strong className="font-serif text-xl text-foreground font-semibold italic">Rigsel Homestay</strong> offers a genuine slice of Himalayan life in <strong className="font-serif text-xl text-foreground font-semibold italic">Kaffer Gaon, Kalimpong</strong>. Wake up to panoramic valley views, savour home-cooked Lepcha and Gorkha delicacies, and let the slow mountain pace heal your soul.
               </p>
 
-              {/* Feature Pills */}
+              
               <ul className="flex flex-wrap gap-2.5" aria-label="Homestay highlights">
                 {[
                   { icon: "🏔️", label: "Valley Views" },
@@ -232,7 +232,7 @@ export default function Home() {
                 ))}
               </ul>
 
-              {/* CTA */}
+             
               <div className="flex items-center gap-6 pt-2">
                 <Link
                   href="/contact"
@@ -253,19 +253,19 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Rooms & Accommodation Section */}
+      
       <RoomsSection />
 
-      {/* Foods We Serve Section */}
+      
       <FoodSection />
 
-      {/* How to Reach Teaser */}
+     
       <HowToReachTeaser />
 
-      {/* Guest Reviews Section */}
+      
       <ReviewsSection />
 
-      {/* Footer pre-CTA */}
+     
       <ContactTeaser />
     </div>
   );
