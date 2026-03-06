@@ -13,7 +13,7 @@ const ATTRACTIONS = [
         title: "Deolo Hill",
         tagline: "Highest Point in Kalimpong",
         description:
-            "At 1,704 m, Deolo is the crown of Kalimpong. Wake up early for a golden sunrise over the Kanchenjunga range and the Teesta valley spread far below. A peaceful picnic point ringed by pine and eucalyptus forests.",
+            "At 1,704 m, Deolo is the crown of Kalimpong. Wake up early for a golden sunrise over the Kanchenjunga range and the Teesta valley spread far below.",
         distance: "~48 km",
         time: "~2 hrs drive",
         image: "/deolo-hill-kalimpong-nearby-attraction.webp",
@@ -32,10 +32,10 @@ const ATTRACTIONS = [
     },
     {
         id: 3,
-        title: "Lolegaon (Loleygaon)",
+        title: "Lolegaon Heritage Forest",
         tagline: "Canopy Walk in the Clouds",
         description:
-            "Walk through dense chestnut and pine forest with clouds literally drifting under your feet. The famous Chilapata Forest canopy walk gives you a bird's-eye view of the valley. Just 20 minutes from Rigsel Homestay.",
+            "Walk through dense chestnut and pine forest with clouds literally drifting under your feet. The famous Chilapata Forest canopy walk gives you a bird's-eye view of the valley.",
         distance: "~20 km",
         time: "~45 min drive",
         image: "/lolegaon-canopy-walk-kalimpong.webp",
@@ -57,7 +57,7 @@ const ATTRACTIONS = [
         title: "Lamahatta Eco Park",
         tagline: "Tranquil Terraced Gardens",
         description:
-            "A meticulously landscaped eco-park with terraced flower gardens, serene walking paths, and unobstructed views of Mt. Kanchenjunga. Ideal for a leisurely half-day outing surrounded by orchids and rhododendrons.",
+            "A meticulously landscaped eco-park with terraced flower gardens, serene walking paths, and unobstructed views of Mt. Kanchenjunga.",
         distance: "~30 km",
         time: "~1.5 hrs drive",
         image: "/lamahatta-eco-park-kalimpong.webp",
@@ -68,11 +68,77 @@ const ATTRACTIONS = [
         title: "Neora Valley National Park",
         tagline: "India's Richest Biodiversity Corridor",
         description:
-            "One of India's most biodiverse forests — home to the elusive Red Panda, leopards, and hundreds of bird species. Trek through ancient oak and rhododendron forests where nature remains completely undisturbed.",
+            "One of India's most biodiverse forests — home to hundreds of bird species. Trek through ancient oak and rhododendron forests where nature remains completely undisturbed.",
         distance: "~40 km",
         time: "~2 hrs drive",
         image: "/neora-valley-national-park-kalimpong.webp",
         alt: "Dense forest trail inside Neora Valley National Park, Kalimpong",
+    },
+    {
+        id: 7,
+        title: "Jhandi Dara Sunrise Point",
+        tagline: "Golden Mornings Above the Clouds",
+        description:
+            "Watch the sun rise over the Himalayas from this stunning hilltop viewpoint just 3 km from Rigsel Homestay. A short early-morning walk rewards you with breathtaking views of the golden peaks.",
+        distance: "~3 km",
+        time: "~10 min drive",
+        image: "/jhandi-dara-sunrise-point.webp",
+        alt: "Sunrise view from Jhandi Dara hilltop near Kaffer Gaon, Kalimpong",
+    },
+    {
+        id: 8,
+        title: "Lolaygoan Eco Park",
+        tagline: "Nature Stroll Just Steps Away",
+        description:
+            "A peaceful eco park tucked in the forest, just 10 minutes on foot from Rigsel Homestay. Perfect for a leisurely morning or evening walk amidst fresh mountain air and lush greenery.",
+        distance: "~500 m",
+        time: "~10 min walk",
+        image: "/lolaygoan-eco-park.webp",
+        alt: "Lolaygoan Eco Park walkway surrounded by trees near Kaffer Gaon",
+    },
+    {
+        id: 9,
+        title: "Dubling Xerong View Point",
+        tagline: "Sweeping Panoramic Vistas",
+        description:
+            "A stunning viewpoint 5 km away offering wide, open panoramas of the surrounding valleys and hills. A quick drive for an unforgettable view that's well worth the trip.",
+        distance: "~5 km",
+        time: "~15 min drive",
+        image: "/dubling-xerong-view-point.webp",
+        alt: "Panoramic valley view from Dubling Xerong viewpoint near Kalimpong",
+    },
+    {
+        id: 10,
+        title: "Kangchenjunga View from Homestay",
+        tagline: "World's Third Highest Peak at Your Doorstep",
+        description:
+            "No need to travel far — Rigsel Homestay itself offers a wide, unobstructed view of the mighty Kangchenjunga range. Wake up to the world's third highest peak right from your room.",
+        distance: "At homestay",
+        time: "No travel needed",
+        image: "/kangchenjunga-peak-view-from-rigsel-homestay-kalimpong.webp",
+        alt: "Wide Kangchenjunga peak view from Rigsel Homestay, Kaffer Gaon, Kalimpong",
+    },
+    {
+        id: 11,
+        title: "Night View of Kalimpong & South Sikkim",
+        tagline: "A Sparkling Sea of Lights",
+        description:
+            "As the sun sets, watch Kalimpong town and South Sikkim come alive with a glittering carpet of lights spread across the hillsides — a magical sight best enjoyed from the homestay terrace.",
+        distance: "At homestay",
+        time: "No travel needed",
+        image: "/night-view-of-kalimpong-town-and-south-sikkim.webp",
+        alt: "Night view of Kalimpong town and South Sikkim lights from Rigsel Homestay",
+    },
+    {
+        id: 12,
+        title: "Lolaygoan Forest",
+        tagline: "Birdwatcher's Paradise",
+        description:
+            "Just 1 km from Rigsel Homestay, this lush forest is a haven for birdwatching and wildlife enthusiasts. Listen to rare birds and spot wildlife in their natural habitat on a quiet forest trail.",
+        distance: "~1 km",
+        time: "~5 min walk",
+        image: "/lolaygoan-forest.webp",
+        alt: "Lolaygoan forest trail near Rigsel Homestay, ideal for birdwatching and wildlife",
     },
 ];
 
@@ -108,13 +174,13 @@ function AttractionCard({
     index: number;
 }) {
     const [isActive, setIsActive] = useState(false);
+    const [imageLoaded, setImageLoaded] = useState(false);
 
     function handleTap() {
         setIsActive((prev: boolean) => !prev);
     }
 
     function handleMouseLeave() {
-
         setIsActive(false);
     }
 
@@ -131,15 +197,33 @@ function AttractionCard({
             aria-label={`${attraction.title} — ${attraction.tagline}`}
             aria-expanded={isActive}
         >
+            
+            {!imageLoaded && (
+                <div
+                    className="absolute inset-0 z-20"
+                    aria-hidden="true"
+                    style={{
+                        background:
+                            "linear-gradient(90deg, #e7e0d8 25%, #f5f0ea 50%, #e7e0d8 75%)",
+                        backgroundSize: "800px 100%",
+                        animation: "shimmer 1.6s ease-in-out infinite",
+                    }}
+                />
+            )}
 
-            <Image
-                src={attraction.image}
-                alt={attraction.alt}
-                fill
-                className="object-cover group-hover:scale-105 data-[active=true]:scale-105 transition-transform duration-700 ease-out"
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                title={`${attraction.title} near Rigsel Homestay, Kaffer Gaon, Kalimpong`}
-            />
+            
+            <div className="absolute inset-0 transition-transform duration-[1000ms] ease-in-out group-hover:scale-[1.04] group-data-[active=true]:scale-[1.04]">
+                <Image
+                    src={attraction.image}
+                    alt={attraction.alt}
+                    fill
+                    onLoad={() => setImageLoaded(true)}
+                    className={`object-cover transition-opacity duration-700 ease-out ${imageLoaded ? "opacity-100" : "opacity-0"
+                        }`}
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    title={`${attraction.title} near Rigsel Homestay, Kaffer Gaon, Kalimpong`}
+                />
+            </div>
 
 
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
@@ -275,7 +359,7 @@ export default function ExplorePageClient() {
                         </p>
                     </div>
 
-                    {/* Cards Grid */}
+                   
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-8">
                         {ATTRACTIONS.map((attraction, index) => (
                             <AttractionCard

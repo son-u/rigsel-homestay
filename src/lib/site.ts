@@ -6,7 +6,7 @@ export const siteConfig = {
         secondary: "6294891218",
         email: "rigselhomestay@gmail.com",
     },
-    address: "Kaffer Gram Panchayat Gaon, Kaffer Gaon, Lolaygoan. West Bengal Kalimpong, 734314",
+    address: "Kaffer Gram Panchayat Gaon, Kaffer Gaon, Lolaygaon. West Bengal Kalimpong, 734314",
     urls: {
         whatsapp: "https://wa.me/919064894704",
     },
