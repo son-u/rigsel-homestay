@@ -1,5 +1,11 @@
 import type { Metadata } from "next";
-import GalleryPageClient from "@/components/pages/gallery-page-client";
+import dynamic from "next/dynamic";
+import { PageSkeleton } from "@/components/ui/section-skeleton";
+
+const GalleryPageClient = dynamic(
+    () => import("@/components/pages/gallery-page-client"),
+    { loading: () => <PageSkeleton /> }
+);
 
 export const metadata: Metadata = {
     title: "Photo Gallery",

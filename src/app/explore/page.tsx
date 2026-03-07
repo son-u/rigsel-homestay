@@ -1,5 +1,11 @@
 import type { Metadata } from "next";
-import ExplorePageClient from "@/components/pages/explore-page-client";
+import dynamic from "next/dynamic";
+import { PageSkeleton } from "@/components/ui/section-skeleton";
+
+const ExplorePageClient = dynamic(
+    () => import("@/components/pages/explore-page-client"),
+    { loading: () => <PageSkeleton /> }
+);
 
 export const metadata: Metadata = {
     title: "Explore Nearby Attractions",

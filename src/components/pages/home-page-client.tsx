@@ -2,16 +2,36 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/lib/site";
 import { MdArrowForwardIos } from "react-icons/md";
+import { SectionSkeleton } from "@/components/ui/section-skeleton";
+
+// Above the fold — load immediately
 import HeroSlider from "@/components/sections/hero-slider";
-import RoomsSection from "@/components/sections/rooms-section";
-import FoodSection from "@/components/sections/food-section";
-import HowToReachTeaser from "@/components/sections/how-to-reach-teaser";
-import ReviewsSection from "@/components/sections/reviews-section";
-import ContactTeaser from "@/components/sections/contact-teaser";
+
+// Below the fold — lazy load on scroll
+const RoomsSection = dynamic(
+    () => import("@/components/sections/rooms-section"),
+    { ssr: false, loading: () => <SectionSkeleton height="h-[600px]" /> }
+);
+const FoodSection = dynamic(
+    () => import("@/components/sections/food-section"),
+    { ssr: false, loading: () => <SectionSkeleton height="h-[480px]" /> }
+);
+const HowToReachTeaser = dynamic(
+    () => import("@/components/sections/how-to-reach-teaser"),
+    { ssr: false, loading: () => <SectionSkeleton height="h-[400px]" /> }
+);
+const ReviewsSection = dynamic(
+    () => import("@/components/sections/reviews-section"),
+    { ssr: false, loading: () => <SectionSkeleton height="h-[520px]" /> }
+);
+const ContactTeaser = dynamic(
+    () => import("@/components/sections/contact-teaser"),
+    { ssr: false, loading: () => <SectionSkeleton height="h-[380px]" /> }
+);
 
 export default function HomePageClient() {
     return (

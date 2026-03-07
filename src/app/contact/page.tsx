@@ -1,5 +1,11 @@
 import type { Metadata } from "next";
-import ContactPageClient from "@/components/pages/contact-page-client";
+import dynamic from "next/dynamic";
+import { PageSkeleton } from "@/components/ui/section-skeleton";
+
+const ContactPageClient = dynamic(
+    () => import("@/components/pages/contact-page-client"),
+    { loading: () => <PageSkeleton /> }
+);
 
 export const metadata: Metadata = {
     title: "Contact & Booking",
