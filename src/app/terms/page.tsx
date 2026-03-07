@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 
 
 export const metadata: Metadata = {
-    title: "Terms of Service — Rigsel Homestay, Kaffer Gaon, Kalimpong",
+    title: "Terms of Service",
     description:
         "Terms of Service for Rigsel Homestay. Understand the conditions that apply when booking or visiting our homestay in Kaffer Gaon, Kalimpong.",
+    alternates: { canonical: "/terms" },
 };
 
 const LAST_UPDATED = "March 2026";

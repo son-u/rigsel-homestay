@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 
 
 export const metadata: Metadata = {
-    title: "Privacy Policy — Rigsel Homestay, Kaffer Gaon, Kalimpong",
+    title: "Privacy Policy",
     description:
         "Privacy Policy for Rigsel Homestay. Learn how we collect, use, and protect your personal information when you contact or book with us.",
+    alternates: { canonical: "/privacy" },
 };
 
 const LAST_UPDATED = "March 2026";

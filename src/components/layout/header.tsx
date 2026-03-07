@@ -110,7 +110,7 @@ export default function Header() {
                     aria-label="Rigsel Homestay Homepage"
                 >
                     <Image
-                        src="/rigselhomestay.png"
+                        src="/rigselhomestay.webp"
                         alt="Rigsel Homestay Logo"
                         width={200}
                         height={44}
@@ -227,7 +227,7 @@ export default function Header() {
 
                             <div className="bg-muted/30 p-8 pb-6 border-b border-border/50">
                                 <Image
-                                    src="/rigselhomestay.svg"
+                                    src="/rigselhomestay.webp"
                                     alt="Rigsel Homestay Logo"
                                     width={200}
                                     height={44}

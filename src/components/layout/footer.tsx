@@ -54,7 +54,7 @@ export default function Footer() {
                             aria-label="Rigsel Homestay — back to homepage"
                         >
                             <Image
-                                src="/rigselhomestay.png"
+                                src="/rigselhomestay.webp"
                                 alt="Rigsel Homestay logo"
                                 width={180}
                                 height={60}

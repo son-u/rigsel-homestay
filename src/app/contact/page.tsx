@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import ContactPageClient from "@/components/pages/contact-page-client";
 
 export const metadata: Metadata = {
-    title: "Contact & Booking | Rigsel Homestay, Kaffer Gaon, Kalimpong",
+    title: "Contact & Booking",
     description:
         "Book your stay at Rigsel Homestay in Kaffer Gaon, Kalimpong. Send a WhatsApp booking inquiry, call us directly, or email us. No advance booking amount required.",
+    alternates: { canonical: "/contact" },
     openGraph: {
         title: "Contact & Booking | Rigsel Homestay",
         description:
