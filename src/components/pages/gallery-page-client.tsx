@@ -4,13 +4,12 @@ import { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 
-// ── Shimmer skeleton for loading images ───────────────────────────────────────
+
 function GalleryImage({ src, alt }: { src: string; alt: string }) {
     const [loaded, setLoaded] = useState(false);
 
     return (
         <>
-            {/* Shimmer shown until image loads */}
             {!loaded && (
                 <div
                     className="absolute inset-0 rounded-2xl"
@@ -34,11 +33,9 @@ function GalleryImage({ src, alt }: { src: string; alt: string }) {
     );
 }
 
-// ── Category definitions ──────────────────────────────────────────────────────
 const CATEGORIES = ["All", "Homestay", "Rooms", "Food", "Nature & Views"] as const;
 type Category = (typeof CATEGORIES)[number];
 
-// ── Gallery data ──────────────────────────────────────────────────────────────
 const GALLERY_IMAGES: {
     id: number;
     category: Exclude<Category, "All">;
@@ -46,7 +43,6 @@ const GALLERY_IMAGES: {
     alt: string;
     span?: "tall" | "wide" | "featured";
 }[] = [
-        // ── Nature & Views ────────────────────────────────────────────────────
         {
             id: 1,
             category: "Nature & Views",
@@ -99,7 +95,6 @@ const GALLERY_IMAGES: {
             src: "/rigsel-homestay-terrace-garden-kaffer-gaon.webp",
             alt: "Terrace garden and green landscape at Rigsel Homestay, Kaffer Gaon",
         },
-        // ── Homestay ─────────────────────────────────────────────────────────
         {
             id: 9,
             category: "Homestay",
@@ -151,7 +146,6 @@ const GALLERY_IMAGES: {
             src: "/rigsel-homestay-happy-guest-kaffer-gaon-3.webp",
             alt: "Guests experiencing Himalayan village hospitality at Rigsel Homestay",
         },
-        // ── Rooms ────────────────────────────────────────────────────────────
         {
             id: 17,
             category: "Rooms",
@@ -190,7 +184,6 @@ const GALLERY_IMAGES: {
             src: "/rigsel-room-washroom-facility.webp",
             alt: "Clean attached washroom facility at Rigsel Homestay, Kalimpong",
         },
-        // ── Food ─────────────────────────────────────────────────────────────
         {
             id: 23,
             category: "Food",
@@ -211,7 +204,6 @@ const GALLERY_IMAGES: {
         },
     ];
 
-// ── Lightbox Component ────────────────────────────────────────────────────────
 function Lightbox({
     image,
     onClose,
@@ -261,7 +253,6 @@ function Lightbox({
     );
 }
 
-// ── Main Gallery Client Component ─────────────────────────────────────────────
 export default function GalleryPageClient() {
     const [activeCategory, setActiveCategory] = useState<Category>("All");
     const [lightboxImage, setLightboxImage] = useState<
@@ -274,7 +265,6 @@ export default function GalleryPageClient() {
 
     return (
         <div className="flex flex-col w-full min-h-screen bg-[#F7F3EE]">
-            {/* ── Hero Section ── */}
             <section
                 className="relative h-[60vh] min-h-[480px] w-full flex items-center justify-center overflow-hidden"
                 aria-label="Gallery hero"
@@ -322,10 +312,8 @@ export default function GalleryPageClient() {
                 </div>
             </section>
 
-            {/* ── Gallery Section ── */}
             <section className="py-16 sm:py-24" aria-labelledby="gallery-heading">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-                    {/* Section Label */}
                     <div className="flex flex-col items-center gap-3 mb-12 text-center">
                         <h2
                             id="gallery-heading"
@@ -338,7 +326,6 @@ export default function GalleryPageClient() {
                         </p>
                     </div>
 
-                    {/* ── Filter Tabs ── */}
                     <div
                         className="flex flex-wrap items-center justify-center gap-2 mb-12"
                         role="tablist"
@@ -361,7 +348,6 @@ export default function GalleryPageClient() {
                         ))}
                     </div>
 
-                    {/* ── Masonry Grid ── */}
                     <motion.div
                         layout
                         className="columns-2 sm:columns-2 lg:columns-3 gap-3 sm:gap-4 space-y-3 sm:space-y-4"
@@ -392,7 +378,6 @@ export default function GalleryPageClient() {
                                     }
                                 >
                                     <GalleryImage src={image.src} alt={image.alt} />
-                                    {/* Hover overlay */}
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
                                         <span className="inline-flex items-center self-start gap-1.5 text-xs font-bold tracking-widest uppercase text-white/80 bg-white/10 backdrop-blur-sm border border-white/15 rounded-full px-3 py-1 mb-2 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
                                             {image.category}
@@ -406,7 +391,6 @@ export default function GalleryPageClient() {
                         </AnimatePresence>
                     </motion.div>
 
-                    {/* Empty state */}
                     {filteredImages.length === 0 && (
                         <div className="text-center py-20 text-muted-foreground">
                             <p className="font-serif italic text-2xl">No photos in this category yet.</p>
@@ -415,7 +399,6 @@ export default function GalleryPageClient() {
                 </div>
             </section>
 
-            {/* ── Lightbox ── */}
             <AnimatePresence>
                 {lightboxImage && (
                     <Lightbox image={lightboxImage} onClose={() => setLightboxImage(null)} />

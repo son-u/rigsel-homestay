@@ -64,6 +64,7 @@
 
   --animate-ripple: ripple 3s cubic-bezier(0, 0, 0.2, 1) infinite;
   --animate-shimmer: shimmer 1.6s ease-in-out infinite;
+  --animate-page-fade-in: pageFadeIn 0.3s ease-in-out;
 
   @keyframes ripple {
     0% {
@@ -84,6 +85,16 @@
 
     100% {
       background-position: 400px 0;
+    }
+  }
+
+  @keyframes pageFadeIn {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
     }
   }
 }

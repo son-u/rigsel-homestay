@@ -32,12 +32,12 @@ export default function Header() {
         setIsScrolled(latest > 20);
     });
 
-    // Close sheet on route change
+   
     useEffect(() => {
         setIsOpen(false);
     }, [pathname]);
 
-    // Track active section based on scroll
+   
     useEffect(() => {
         if (pathname !== "/") return;
 
@@ -45,7 +45,7 @@ export default function Header() {
             (entries) => {
                 const visibleEntries = entries.filter((entry) => entry.isIntersecting);
                 if (visibleEntries.length > 0) {
-                    // Get the most visible section (highest intersection ratio)
+                    
                     const mostVisible = visibleEntries.reduce((prev, current) =>
                         (prev.intersectionRatio > current.intersectionRatio) ? prev : current
                     );
@@ -53,19 +53,19 @@ export default function Header() {
                 }
             },
             {
-                rootMargin: "-20% 0px -60% 0px", // Check middle of screen
+                rootMargin: "-20% 0px -60% 0px", 
                 threshold: [0, 0.25, 0.5, 0.75, 1],
             }
         );
 
-        // Observe sections
+        
         const aboutSection = document.getElementById("about-rigsel-homestay");
         const roomsSection = document.getElementById("rooms-accommodation");
 
         if (aboutSection) observer.observe(aboutSection);
         if (roomsSection) observer.observe(roomsSection);
 
-        // Special case for top of page (Home)
+        
         const handleScroll = () => {
             if (window.scrollY < 100) {
                 setActiveHash("");
@@ -97,7 +97,7 @@ export default function Header() {
                         : "shadow-lg shadow-black/5 py-4 border border-border/20"
                 )}
             >
-                {/* Left: Logo */}
+                
                 <Link
                     href="/"
                     onClick={(e) => {
@@ -110,7 +110,7 @@ export default function Header() {
                     aria-label="Rigsel Homestay Homepage"
                 >
                     <Image
-                        src="/rigselhomestay.svg"
+                        src="/rigselhomestay.png"
                         alt="Rigsel Homestay Logo"
                         width={200}
                         height={44}
@@ -119,24 +119,23 @@ export default function Header() {
                     />
                 </Link>
 
-                {/* Center: Desktop Navigation */}
+                
                 <nav className="hidden lg:flex flex-1 justify-center items-center" aria-label="Main Navigation">
                     <ul className="flex items-center gap-1 xl:gap-2">
                         {NAV_LINKS.map((link) => {
-                            // If we are on home page and link has a hash, check activeHash
-                            // Otherwise fallback to pathname matching
+                            
                             const isHomeHashLink = pathname === "/" && link.href.startsWith("/#");
                             let isActive = false;
 
                             if (isHomeHashLink) {
-                                // e.g. /#about-rigsel-homestay -> #about-rigsel-homestay
+                            
                                 const hash = link.href.substring(1);
                                 isActive = activeHash === hash;
                             } else if (pathname === "/" && link.href === "/") {
-                                // Home logic: Active if no hash is active
+                                
                                 isActive = activeHash === "";
                             } else {
-                                // Other pages
+                                
                                 isActive = pathname === link.href;
                             }
 
@@ -171,7 +170,7 @@ export default function Header() {
                                         >
                                             {link.name}
                                         </span>
-                                        {/* Active State / Hover Indicator (Green primary) */}
+                                        
                                         <span
                                             className={cn(
                                                 "absolute -bottom-1 h-[3px] rounded-full transition-all duration-300",
@@ -185,7 +184,7 @@ export default function Header() {
                     </ul>
                 </nav>
 
-                {/* Right: CTAs & Mobile Toggle */}
+                
                 <div className="flex items-center gap-2 sm:gap-4 flex-shrink-0">
 
                     <Button
@@ -211,7 +210,7 @@ export default function Header() {
                         </a>
                     </Button>
 
-                    {/* Mobile Menu Toggle (Sheet) */}
+                    
                     <Sheet open={isOpen} onOpenChange={setIsOpen}>
                         <SheetTrigger asChild>
                             <button
@@ -239,7 +238,7 @@ export default function Header() {
                             <div className="flex-1 overflow-y-auto p-6 flex flex-col gap-2">
                                 <nav className="flex flex-col gap-2" aria-label="Mobile Navigation">
                                     {NAV_LINKS.map((link) => {
-                                        // Mobile active state logic
+                                        
                                         const isHomeHashLink = pathname === "/" && link.href.startsWith("/#");
                                         let isActive = false;
 

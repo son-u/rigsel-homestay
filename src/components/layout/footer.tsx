@@ -36,13 +36,13 @@ export default function Footer() {
             className="bg-[#F5F0E8] text-foreground/80 border-t border-border/30"
             aria-label="Site footer"
         >
-            {/* Main footer grid */}
+
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
                 <div className="grid grid-cols-1 md:grid-cols-[1.6fr_1fr_1.2fr] gap-12 xl:gap-20">
 
-                    {/* ── Col 1: Brand & Description ── */}
+
                     <div className="flex flex-col gap-6">
-                        {/* Logo */}
+
                         <Link
                             href="/"
                             onClick={(e) => {
@@ -54,7 +54,7 @@ export default function Footer() {
                             aria-label="Rigsel Homestay — back to homepage"
                         >
                             <Image
-                                src="/rigselhomestay.svg"
+                                src="/rigselhomestay.png"
                                 alt="Rigsel Homestay logo"
                                 width={180}
                                 height={60}
@@ -67,19 +67,17 @@ export default function Footer() {
                             Experience the authentic warmth of Himalayan village hospitality. Wake up to misty mountains, birdsong, and a warm cup of Darjeeling tea in the serene forests of Kaffer Gaon.
                         </p>
 
-                        {/* Social Icons */}
+
                         <div className="flex gap-4">
-                            <a
-                                href="#"
-                                target="_blank"
-                                rel="noreferrer"
+                            <Link
+                                href={siteConfig.urls.instagram}
                                 aria-label="Follow Rigsel Homestay on Instagram"
                                 className="w-9 h-9 rounded-full bg-foreground/5 border border-foreground/10 flex items-center justify-center text-foreground/40 hover:text-primary hover:bg-primary/10 hover:border-primary/20 transition-all"
                             >
                                 <FaInstagram size={16} />
-                            </a>
+                            </Link>
                             <a
-                                href="#"
+                                href={siteConfig.urls.facebook}
                                 target="_blank"
                                 rel="noreferrer"
                                 aria-label="Follow Rigsel Homestay on Facebook"
@@ -90,7 +88,7 @@ export default function Footer() {
                         </div>
                     </div>
 
-                    {/* ── Col 2: Quick Links ── */}
+
                     <nav aria-label="Quick navigation links">
                         <h4 className="font-serif italic font-semibold text-xl text-foreground mb-6">
                             Quick Links
@@ -111,7 +109,7 @@ export default function Footer() {
                         </ul>
                     </nav>
 
-                    {/* ── Col 3: Contact Info ── */}
+
                     <div>
                         <h4 className="font-serif italic font-semibold text-xl text-foreground mb-6">
                             Contact Us
@@ -155,7 +153,7 @@ export default function Footer() {
                 </div>
             </div>
 
-            {/* ── Bottom Bar ── */}
+
             <div className="border-t border-foreground/10">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row justify-between items-center gap-3">
                     <p className="text-xs text-foreground/40">
