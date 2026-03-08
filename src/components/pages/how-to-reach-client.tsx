@@ -95,7 +95,10 @@ export default function HowToReachClient() {
                             className="flex flex-col gap-10"
                         >
                             <div>
-                                <p className="text-xs font-bold tracking-widest uppercase text-secondary mb-3">
+                                <p
+                                    className="inline-flex items-center text-xs font-bold tracking-[0.22em] uppercase text-secondary mb-4 px-4 py-1.5 rounded-full"
+                                    style={{ background: "rgba(13,165,233,0.1)", border: "1px solid rgba(13,165,233,0.25)" }}
+                                >
                                     Major Transit Nodes
                                 </p>
                                 <h3 className="font-serif italic font-medium text-4xl text-foreground leading-tight mb-8">
@@ -109,7 +112,7 @@ export default function HowToReachClient() {
                                         </div>
                                         <div>
                                             <h4 className="font-serif italic font-semibold text-xl text-foreground mb-1">New Jalpaiguri (NJP) Railway Station</h4>
-                                            <p className="text-xs font-bold tracking-widest uppercase text-secondary mb-3">~110 km | 4-5 hours</p>
+                                            <p className="text-xs font-bold tracking-widest uppercase text-secondary mb-3">~110 km via NH717A | 4-5 hours</p>
                                             <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
                                                 The closest major railway hub. You can hire a direct cab from the NJP taxi stand or request us to arrange a trusted local pickup for you.
                                             </p>
