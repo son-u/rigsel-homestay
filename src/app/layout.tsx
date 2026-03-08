@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Poppins, Cormorant_Garamond } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
-import LenisProvider from "@/components/providers/lenis-provider";
+
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import WhatsAppFAB from "@/components/layout/whatsapp-fab";
@@ -45,16 +45,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="overflow-x-hidden">
+    <html lang="en" className="overflow-x-hidden" data-scroll-behavior="smooth">
       <body className={`${poppins.variable} ${cormorant.variable} antialiased min-h-screen flex flex-col overflow-x-hidden`}>
-        <LenisProvider>
-          <Header />
-          <main className="flex-1">
-            {children}
-          </main>
-          <WhatsAppFAB />
-          <Footer />
-        </LenisProvider>
+        <Header />
+        <main className="flex-1">
+          {children}
+        </main>
+        <WhatsAppFAB />
+        <Footer />
         <GoogleAnalytics gaId="G-J21VL5HEFN" />
         <script
           type="application/ld+json"

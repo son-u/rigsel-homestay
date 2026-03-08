@@ -4,39 +4,47 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 
 interface LazySectionProps {
     children: ReactNode;
-    /** Height of the placeholder shown before the section mounts. Defaults to "h-[400px]". */
     placeholderHeight?: string;
-    /** IntersectionObserver rootMargin — how far before the element enters the viewport to start loading. Defaults to "200px". */
     rootMargin?: string;
 }
 
-/**
- * A wrapper that defers rendering its children until the section
- * scrolls into (or near) the viewport. Combines with next/dynamic's
- * code-splitting to truly prevent JS chunks from loading until needed.
- */
 export default function LazySection({
     children,
     placeholderHeight = "h-[400px]",
     rootMargin = "200px",
 }: LazySectionProps) {
     const ref = useRef<HTMLDivElement>(null);
-    const [isVisible, setIsVisible] = useState(false);
+    const [isVisible, setIsVisible] = useState(
+        () => typeof window !== "undefined" && window.location.hash !== ""
+    );
 
     useEffect(() => {
+        if (isVisible) return;
+
+        const show = () => setIsVisible(true);
+        const handleClick = (e: MouseEvent) => {
+            const anchor = (e.target as HTMLElement).closest<HTMLAnchorElement>('a[href*="#"]');
+            if (anchor) show();
+        };
+
+        window.addEventListener("hashchange", show, { once: true });
+        document.addEventListener("click", handleClick);
+
+        if (typeof IntersectionObserver === "undefined") {
+            show();
+            return () => {
+                window.removeEventListener("hashchange", show);
+                document.removeEventListener("click", handleClick);
+            };
+        }
+
         const el = ref.current;
         if (!el) return;
-
-        // If IntersectionObserver isn't supported, just show immediately
-        if (typeof IntersectionObserver === "undefined") {
-            setIsVisible(true);
-            return;
-        }
 
         const observer = new IntersectionObserver(
             ([entry]) => {
                 if (entry.isIntersecting) {
-                    setIsVisible(true);
+                    show();
                     observer.disconnect();
                 }
             },
@@ -44,8 +52,12 @@ export default function LazySection({
         );
 
         observer.observe(el);
-        return () => observer.disconnect();
-    }, [rootMargin]);
+        return () => {
+            observer.disconnect();
+            window.removeEventListener("hashchange", show);
+            document.removeEventListener("click", handleClick);
+        };
+    }, [isVisible, rootMargin]);
 
     if (!isVisible) {
         return (

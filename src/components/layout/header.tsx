@@ -32,12 +32,12 @@ export default function Header() {
         setIsScrolled(latest > 20);
     });
 
-   
+
     useEffect(() => {
         setIsOpen(false);
     }, [pathname]);
 
-   
+
     useEffect(() => {
         if (pathname !== "/") return;
 
@@ -45,7 +45,7 @@ export default function Header() {
             (entries) => {
                 const visibleEntries = entries.filter((entry) => entry.isIntersecting);
                 if (visibleEntries.length > 0) {
-                    
+
                     const mostVisible = visibleEntries.reduce((prev, current) =>
                         (prev.intersectionRatio > current.intersectionRatio) ? prev : current
                     );
@@ -53,19 +53,19 @@ export default function Header() {
                 }
             },
             {
-                rootMargin: "-20% 0px -60% 0px", 
+                rootMargin: "-20% 0px -60% 0px",
                 threshold: [0, 0.25, 0.5, 0.75, 1],
             }
         );
 
-        
+
         const aboutSection = document.getElementById("about-rigsel-homestay");
         const roomsSection = document.getElementById("rooms-accommodation");
 
         if (aboutSection) observer.observe(aboutSection);
         if (roomsSection) observer.observe(roomsSection);
 
-        
+
         const handleScroll = () => {
             if (window.scrollY < 100) {
                 setActiveHash("");
@@ -97,7 +97,7 @@ export default function Header() {
                         : "shadow-lg shadow-black/5 py-4 border border-border/20"
                 )}
             >
-                
+
                 <Link
                     href="/"
                     onClick={(e) => {
@@ -119,23 +119,23 @@ export default function Header() {
                     />
                 </Link>
 
-                
+
                 <nav className="hidden lg:flex flex-1 justify-center items-center" aria-label="Main Navigation">
                     <ul className="flex items-center gap-1 xl:gap-2">
                         {NAV_LINKS.map((link) => {
-                            
+
                             const isHomeHashLink = pathname === "/" && link.href.startsWith("/#");
                             let isActive = false;
 
                             if (isHomeHashLink) {
-                            
+
                                 const hash = link.href.substring(1);
                                 isActive = activeHash === hash;
                             } else if (pathname === "/" && link.href === "/") {
-                                
+
                                 isActive = activeHash === "";
                             } else {
-                                
+
                                 isActive = pathname === link.href;
                             }
 
@@ -150,13 +150,9 @@ export default function Header() {
                                                     e.preventDefault();
                                                     window.scrollTo({ top: 0, behavior: "smooth" });
                                                 } else if (link.href.startsWith("/#")) {
+                                                    e.preventDefault();
                                                     const targetId = link.href.split("#")[1];
-                                                    const elem = document.getElementById(targetId);
-                                                    if (elem) {
-                                                        e.preventDefault();
-                                                        elem.scrollIntoView({ behavior: "smooth" });
-                                                        window.history.pushState(null, "", link.href);
-                                                    }
+                                                    document.getElementById(targetId)?.scrollIntoView({ behavior: "smooth" });
                                                 }
                                             }
                                         }}
@@ -170,7 +166,7 @@ export default function Header() {
                                         >
                                             {link.name}
                                         </span>
-                                        
+
                                         <span
                                             className={cn(
                                                 "absolute -bottom-1 h-[3px] rounded-full transition-all duration-300",
@@ -184,7 +180,7 @@ export default function Header() {
                     </ul>
                 </nav>
 
-                
+
                 <div className="flex items-center gap-2 sm:gap-4 flex-shrink-0">
 
                     <Button
@@ -210,7 +206,7 @@ export default function Header() {
                         </a>
                     </Button>
 
-                    
+
                     <Sheet open={isOpen} onOpenChange={setIsOpen}>
                         <SheetTrigger asChild>
                             <button
@@ -238,7 +234,7 @@ export default function Header() {
                             <div className="flex-1 overflow-y-auto p-6 flex flex-col gap-2">
                                 <nav className="flex flex-col gap-2" aria-label="Mobile Navigation">
                                     {NAV_LINKS.map((link) => {
-                                        
+
                                         const isHomeHashLink = pathname === "/" && link.href.startsWith("/#");
                                         let isActive = false;
 
@@ -263,17 +259,13 @@ export default function Header() {
                                                             e.preventDefault();
                                                             setTimeout(() => {
                                                                 window.scrollTo({ top: 0, behavior: "smooth" });
-                                                            }, 100);
+                                                            }, 150);
                                                         } else if (link.href.startsWith("/#")) {
+                                                            e.preventDefault();
                                                             const targetId = link.href.split("#")[1];
-                                                            const elem = document.getElementById(targetId);
-                                                            if (elem) {
-                                                                e.preventDefault();
-                                                                setTimeout(() => {
-                                                                    elem.scrollIntoView({ behavior: "smooth" });
-                                                                    window.history.pushState(null, "", link.href);
-                                                                }, 100);
-                                                            }
+                                                            setTimeout(() => {
+                                                                document.getElementById(targetId)?.scrollIntoView({ behavior: "smooth" });
+                                                            }, 150);
                                                         }
                                                     }
                                                 }}

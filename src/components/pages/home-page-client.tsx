@@ -2,21 +2,15 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import { siteConfig } from "@/lib/site";
 import { MdArrowForwardIos } from "react-icons/md";
-import LazySection from "@/components/ui/lazy-section";
-
-// Above the fold — load immediately
 import HeroSlider from "@/components/sections/hero-slider";
-
-// Below the fold — lazy loaded (IntersectionObserver gate + dynamic import)
-const RoomsSection = dynamic(() => import("@/components/sections/rooms-section"), { ssr: false });
-const FoodSection = dynamic(() => import("@/components/sections/food-section"), { ssr: false });
-const HowToReachTeaser = dynamic(() => import("@/components/sections/how-to-reach-teaser"), { ssr: false });
-const ReviewsSection = dynamic(() => import("@/components/sections/reviews-section"), { ssr: false });
-const ContactTeaser = dynamic(() => import("@/components/sections/contact-teaser"), { ssr: false });
+import RoomsSection from "@/components/sections/rooms-section";
+import FoodSection from "@/components/sections/food-section";
+import HowToReachTeaser from "@/components/sections/how-to-reach-teaser";
+import ReviewsSection from "@/components/sections/reviews-section";
+import ContactTeaser from "@/components/sections/contact-teaser";
 
 export default function HomePageClient() {
     return (
@@ -259,25 +253,15 @@ export default function HomePageClient() {
             </section>
 
 
-            <LazySection placeholderHeight="h-[600px]">
-                <RoomsSection />
-            </LazySection>
+            <RoomsSection />
 
-            <LazySection placeholderHeight="h-[480px]">
-                <FoodSection />
-            </LazySection>
+            <FoodSection />
 
-            <LazySection placeholderHeight="h-[400px]">
-                <HowToReachTeaser />
-            </LazySection>
+            <HowToReachTeaser />
 
-            <LazySection placeholderHeight="h-[520px]">
-                <ReviewsSection />
-            </LazySection>
+            <ReviewsSection />
 
-            <LazySection placeholderHeight="h-[380px]">
-                <ContactTeaser />
-            </LazySection>
+            <ContactTeaser />
         </div>
     );
 }
