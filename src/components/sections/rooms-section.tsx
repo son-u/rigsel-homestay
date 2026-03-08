@@ -8,7 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { siteConfig } from "@/lib/site";
 import { MdArrowForwardIos } from "react-icons/md";
 
-// ─── Constants ────────────────────────────────────────────────────────────────
+
 const WHATSAPP_NUMBER = `91${siteConfig.contact.primary}`;
 
 const ROOMS = [
@@ -52,19 +52,19 @@ function CheckIcon() {
     );
 }
 
-// ─── Fixed-height mosaic gallery — zero empty space guaranteed ─────────────────
+
 function RoomMosaic() {
     return (
         <figure
             className="flex flex-col gap-2"
             aria-label="Rigsel Homestay rooms and facilities photo gallery"
         >
-            {/* ── TOP ROW ── */}
+
             <div className="grid grid-cols-[1.35fr_1fr] gap-2 h-[220px] sm:h-[280px] lg:h-[320px]">
-                {/* Feature image */}
+
                 <div className="relative overflow-hidden rounded-2xl">
                     <Image
-                        src="/rigsel-room-double-bed-type-a-1.webp"
+                        src="/rigsel-homestay-double-bed-room-with-kalimpong-hill-view.webp"
                         alt="Rigsel Homestay Double Bed Room — warm wooden interiors with natural light and Kalimpong hill views"
                         fill
                         className="object-cover hover:scale-105 transition-transform duration-700"
@@ -72,11 +72,11 @@ function RoomMosaic() {
                     />
                 </div>
 
-                {/* Two stacked */}
+
                 <div className="flex flex-col gap-2">
                     <div className="relative overflow-hidden rounded-2xl flex-1">
                         <Image
-                            src="/rigsel-room-double-bed-type-b-1.webp"
+                            src="/rigsel-homestay-double-bed-room-with-forest-view.webp"
                             alt="Rigsel Homestay Double Bed Room Type B — bright airy interior with forest views"
                             fill
                             className="object-cover hover:scale-105 transition-transform duration-700"
@@ -85,7 +85,7 @@ function RoomMosaic() {
                     </div>
                     <div className="relative overflow-hidden rounded-2xl flex-1">
                         <Image
-                            src="/rigsel-room-family-four-bed.webp"
+                            src="/rigsel-homestay-spacious-four-bed-family-room-kaffer-gaon.webp"
                             alt="Rigsel Homestay Four Bed Family Room — spacious room for families in Kaffer Gaon, Kalimpong"
                             fill
                             className="object-cover hover:scale-105 transition-transform duration-700"
@@ -95,11 +95,11 @@ function RoomMosaic() {
                 </div>
             </div>
 
-            {/* ── BOTTOM ROW ── */}
+
             <div className="grid grid-cols-3 gap-2 h-[120px] sm:h-[150px] lg:h-[160px]">
                 <div className="relative overflow-hidden rounded-2xl">
                     <Image
-                        src="/rigsel-room-double-bed-type-a-2.webp"
+                        src="/rigsel-homestay-cozy-mountain-double-room-interior.webp"
                         alt="Rigsel Homestay Double Bed Room — cozy mountain atmosphere and furnishings"
                         fill
                         className="object-cover hover:scale-105 transition-transform duration-700"
@@ -108,7 +108,7 @@ function RoomMosaic() {
                 </div>
                 <div className="relative overflow-hidden rounded-2xl">
                     <Image
-                        src="/rigsel-room-double-bed-type-b-2.webp"
+                        src="/rigsel-homestay-bright-airy-double-room.webp"
                         alt="Rigsel Homestay Double Bed Room — natural light and comfortable interiors"
                         fill
                         className="object-cover hover:scale-105 transition-transform duration-700"
@@ -117,7 +117,7 @@ function RoomMosaic() {
                 </div>
                 <div className="relative overflow-hidden rounded-2xl">
                     <Image
-                        src="/rigsel-room-washroom-facility.webp"
+                        src="/rigsel-homestay-clean-modern-washroom-facility.webp"
                         alt="Rigsel Homestay clean and well-maintained washroom facility"
                         fill
                         className="object-cover hover:scale-105 transition-transform duration-700"
@@ -133,7 +133,7 @@ function RoomMosaic() {
     );
 }
 
-// ─── Main Section ─────────────────────────────────────────────────────────────
+
 export default function RoomsSection() {
     const [activeRoom, setActiveRoom] = useState(0);
     const room = ROOMS[activeRoom];
@@ -148,7 +148,7 @@ export default function RoomsSection() {
         >
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
 
-                {/* ── Section Header ── */}
+
                 <motion.div
                     className="text-center mb-12 sm:mb-16 flex flex-col items-center gap-4"
                     initial={{ opacity: 0, y: 20 }}
@@ -174,10 +174,10 @@ export default function RoomsSection() {
                     </p>
                 </motion.div>
 
-                {/* ── Two-column layout: Gallery | Info ── */}
+
                 <div className="grid lg:grid-cols-[1.15fr_1fr] gap-8 xl:gap-12 items-start">
 
-                    {/* ══ LEFT — Mosaic Gallery ══ */}
+
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -187,7 +187,7 @@ export default function RoomsSection() {
                         <RoomMosaic />
                     </motion.div>
 
-                    {/* ══ RIGHT — Info Panel ══ */}
+
                     <motion.div
                         initial={{ opacity: 0, x: 30 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -195,7 +195,7 @@ export default function RoomsSection() {
                         transition={{ duration: 0.8 }}
                         className="flex flex-col gap-4"
                     >
-                        {/* Room tabs — side by side */}
+
                         <div role="tablist" aria-label="Select room type" className="grid grid-cols-2 gap-3">
                             {ROOMS.map((r, i) => (
                                 <button
@@ -222,7 +222,7 @@ export default function RoomsSection() {
                             ))}
                         </div>
 
-                        {/* Detail Panel */}
+
                         <motion.div
                             id="room-detail-panel"
                             role="tabpanel"
@@ -236,7 +236,7 @@ export default function RoomsSection() {
                                 {room.description}
                             </p>
 
-                            {/* Shared amenities */}
+
                             <div>
                                 <p className="text-[10px] font-bold tracking-[0.18em] uppercase text-foreground/40 mb-2">
                                     All Rooms Include
@@ -254,7 +254,7 @@ export default function RoomsSection() {
                                 </ul>
                             </div>
 
-                            {/* Price block */}
+
                             <div className="rounded-xl bg-primary/5 border border-primary/15 px-4 py-3.5 flex items-center justify-between gap-4">
                                 <div>
                                     <p className="font-serif italic font-semibold text-2xl text-primary">{room.price}</p>
@@ -266,7 +266,7 @@ export default function RoomsSection() {
                             </div>
                         </motion.div>
 
-                        {/* CTAs */}
+
                         <div className="flex flex-col sm:flex-row gap-3">
                             <a
                                 href={waUrl}

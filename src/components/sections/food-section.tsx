@@ -95,7 +95,7 @@ export default function FoodSection() {
                         <div className="flex flex-col gap-3 sm:gap-4">
                             <div className="relative h-36 sm:h-60 lg:h-72 w-full rounded-2xl overflow-hidden shadow-lg">
                                 <Image
-                                    src="/rigsel-gorkhali-authentic-homemade-food.webp"
+                                    src="/rigsel-homestay-gorkhali-authentic-homemade-food.webp"
                                     alt="Authentic Gorkhali home-made food served at Rigsel Homestay, Kaffer Gaon, Kalimpong"
                                     fill
                                     className="object-cover hover:scale-105 transition-transform duration-700"
@@ -104,7 +104,7 @@ export default function FoodSection() {
                             </div>
                             <div className="relative h-28 sm:h-44 lg:h-52 w-full rounded-2xl overflow-hidden shadow-lg">
                                 <Image
-                                    src="/rigsel-farm-fresh-organic-meal-kalimpong.webp"
+                                    src="/rigsel-homestay-farm-fresh-organic-meal-kalimpong.webp"
                                     alt="Farm-fresh organic meal made from Rigsel Homestay's own garden in the Kalimpong hills"
                                     fill
                                     className="object-cover hover:scale-105 transition-transform duration-700"
@@ -117,7 +117,7 @@ export default function FoodSection() {
                         <div className="sm:pt-10 lg:pt-12">
                             <div className="relative h-[11rem] sm:h-[22rem] lg:h-[26rem] w-full rounded-2xl overflow-hidden shadow-lg">
                                 <Image
-                                    src="/rigsel-homestay-traditional-gorkha-cuisine.webp"
+                                    src="/rigsel-homestay-traditional-gorkha-cuisine-kaffer-gaon.webp"
                                     alt="Traditional Gorkha cuisine — sel roti, dal bhat and seasonal vegetables served at Rigsel Homestay, Kalimpong"
                                     fill
                                     className="object-cover hover:scale-105 transition-transform duration-700"

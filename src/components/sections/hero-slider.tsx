@@ -6,11 +6,11 @@ import Link from "next/link";
 import { motion, AnimatePresence, type Variants, type Transition } from "framer-motion";
 import { MdArrowForwardIos } from "react-icons/md";
 
-// ─── Slide Data ───────────────────────────────────────────────────────────────
+
 const SLIDES = [
     {
         id: 1,
-        src: "/hero-1.webp",
+        src: "/kalimpong-homestay-sunrise-valley-view.webp",
         alt: "Golden sunrise over the misty valleys of Kaffer Gaon, Kalimpong",
         eyebrow: "Kaffer Gaon, Kalimpong",
         headline: ["Where the Mountains", "Feel Like Home"],
@@ -18,7 +18,7 @@ const SLIDES = [
     },
     {
         id: 2,
-        src: "/hero-2.webp",
+        src: "/kaffer-gaon-lush-green-hills.webp",
         alt: "Lush green terraced hillsides of Kalimpong under soft daylight",
         eyebrow: "Himalayan Hill Life",
         headline: ["Breathe In the", "Wild Silence"],
@@ -26,7 +26,7 @@ const SLIDES = [
     },
     {
         id: 3,
-        src: "/hero-3.webp",
+        src: "/rigsel-homestay-warm-evening-view.webp",
         alt: "Warm evening view of Rigsel Homestay nestled in the Kalimpong hills",
         eyebrow: "Rigsel Homestay",
         headline: ["A Warm Light", "Waiting for You"],
@@ -36,7 +36,7 @@ const SLIDES = [
 
 const INTERVAL_MS = 4000;
 
-// ─── Ken Burns image transition ───────────────────────────────────────────────
+
 const kenBurnsTransition: Transition = {
     duration: 1.2,
     ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number],
@@ -48,7 +48,7 @@ const imageVariants: Variants = {
     exit: { opacity: 0, transition: { duration: 0.8 } },
 };
 
-// ─── Text overlay stagger ─────────────────────────────────────────────────────
+
 const containerVariants: Variants = {
     hidden: {},
     visible: { transition: { staggerChildren: 0.15, delayChildren: 0.55 } },
@@ -60,7 +60,7 @@ const itemVariants: Variants = {
     visible: { opacity: 1, y: 0, transition: { duration: 0.7, type: "tween" } },
 };
 
-// ─── Progress Bar ─────────────────────────────────────────────────────────────
+
 function ProgressBar({ slideKey }: { slideKey: number }) {
     return (
         <div className="h-[2px] w-16 bg-white/30 rounded-full overflow-hidden">
@@ -75,7 +75,6 @@ function ProgressBar({ slideKey }: { slideKey: number }) {
     );
 }
 
-// ─── Main Component ───────────────────────────────────────────────────────────
 export default function HeroSlider() {
     const [current, setCurrent] = useState(0);
 
@@ -95,7 +94,6 @@ export default function HeroSlider() {
             className="relative w-full h-screen min-h-[600px] overflow-hidden"
             aria-label="Rigsel Homestay — Hero Image Slider"
         >
-            {/* ── Background Slides with Ken Burns ── */}
             <AnimatePresence>
                 <motion.div
                     key={slide.id}
@@ -117,7 +115,6 @@ export default function HeroSlider() {
                 </motion.div>
             </AnimatePresence>
 
-            {/* ── Gradient Overlay ── */}
             <div
                 className="absolute inset-0 pointer-events-none"
                 style={{
@@ -127,7 +124,6 @@ export default function HeroSlider() {
                 aria-hidden="true"
             />
 
-            {/* ── Text Overlay ── */}
             <div className="absolute inset-0 flex flex-col justify-end pb-28 sm:pb-36 px-6 sm:px-12 lg:px-20">
                 <div className="max-w-7xl mx-auto w-full">
                     <AnimatePresence mode="wait">
@@ -139,7 +135,6 @@ export default function HeroSlider() {
                             exit="exit"
                             className="flex flex-col items-start gap-4"
                         >
-                            {/* Eyebrow */}
                             <motion.p
                                 variants={itemVariants}
                                 className="inline-flex items-center text-xs sm:text-sm font-bold tracking-[0.22em] uppercase text-white px-4 py-1.5 rounded-full"
@@ -153,7 +148,7 @@ export default function HeroSlider() {
                                 {slide.eyebrow}
                             </motion.p>
 
-                            {/* Headline */}
+
                             <motion.h1
                                 variants={itemVariants}
                                 className="font-serif italic text-5xl sm:text-6xl lg:text-7xl xl:text-[5.5rem] font-medium text-white leading-[1.04] max-w-3xl"
@@ -164,7 +159,7 @@ export default function HeroSlider() {
                                 ))}
                             </motion.h1>
 
-                            {/* Sub-headline */}
+
                             <motion.p
                                 variants={itemVariants}
                                 className="text-base sm:text-lg text-white/80 max-w-xl leading-relaxed"
@@ -173,7 +168,7 @@ export default function HeroSlider() {
                                 {slide.sub}
                             </motion.p>
 
-                            {/* CTAs */}
+
                             <motion.div variants={itemVariants} className="flex w-full sm:w-auto gap-3 mt-2 sm:mt-4">
                                 <Link
                                     href="/contact"
@@ -200,7 +195,7 @@ export default function HeroSlider() {
                 </div>
             </div>
 
-            {/* ── Slide Indicator — bottom left ── */}
+
             <div
                 className="absolute bottom-9 sm:bottom-11 left-6 sm:left-12 lg:left-20 flex items-center gap-4"
                 role="status"
@@ -218,7 +213,7 @@ export default function HeroSlider() {
                     {String(SLIDES.length).padStart(2, "0")}
                 </span>
 
-                {/* Dot selectors */}
+
                 <div className="flex gap-2" role="list">
                     {SLIDES.map((s, i) => (
                         <button
@@ -236,7 +231,7 @@ export default function HeroSlider() {
                 </div>
             </div>
 
-            {/* ── Scroll hint — bottom right ── */}
+
             <div
                 className="absolute bottom-9 right-6 sm:right-12 lg:right-20 hidden sm:flex flex-col items-center gap-2"
                 aria-hidden="true"
