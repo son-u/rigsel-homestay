@@ -16,7 +16,7 @@ export const metadata: Metadata = {
         title: "Photo Gallery | Rigsel Homestay",
         description:
             "A visual journey through the landscapes, rooms, and flavors of Rigsel Homestay in Kaffer Gaon, Kalimpong.",
-        images: ["/rigsel-homestay-kaffer-gaon-gallery-hero.webp"],
+        images: ["/rigsel-homestay-traditional-gorkha-cuisine-kaffer-gaon.webp"],
     },
 };
 

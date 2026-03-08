@@ -10,7 +10,7 @@ export const metadata: Metadata = {
         title: "How to Reach Rigsel Homestay | Kaffer Gaon, Kalimpong",
         description:
             "Find your way to Rigsel Homestay in Kaffer Gaon, Kalimpong. Routes from NJP, Bagdogra, and Kalimpong Town — with scenic mountain roads all the way.",
-        images: ["/rigsel-homestay-kaffer-gaon-kalimpong-how-to-reach.webp"],
+        images: ["/kalimpong-homestay-sunrise-valley-view.webp"],
     },
 };
 

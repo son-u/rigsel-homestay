@@ -28,6 +28,18 @@ export const metadata: Metadata = {
   },
   description:
     "Experience authentic Himalayan village hospitality at Rigsel Homestay. A peaceful retreat in Kaffer Gaon surrounded by misty mountains, nature, and Gorkha culture.",
+  keywords: ["Rigsel Homestay", "Kaffer Gaon", "Kalimpong homestay", "Lolegaon", "Offbeat Kalimpong", "Mountain homestay"],
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
     siteName: "Rigsel Homestay",
     locale: "en_IN",

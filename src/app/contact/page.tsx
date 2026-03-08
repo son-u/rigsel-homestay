@@ -16,7 +16,7 @@ export const metadata: Metadata = {
         title: "Contact & Booking | Rigsel Homestay",
         description:
             "Reach out to Rigsel Homestay in Kaffer Gaon, Kalimpong — no advance booking required. Book directly via WhatsApp.",
-        images: ["/rigsel-homestay-kaffer-gaon-kalimpong-contact-hero.webp"],
+        images: ["/rigsel-homestay-warm-evening-view.webp"],
     },
 };
 

@@ -16,7 +16,7 @@ export const metadata: Metadata = {
         title: "Explore Nearby Attractions | Rigsel Homestay",
         description:
             "Make Rigsel Homestay your base camp. Explore Deolo Hill, Durpin Dara, Lolegaon, Relli Falls, Lamahatta, and Neora Valley from Kaffer Gaon, Kalimpong.",
-        images: ["/explore-hero.webp"],
+        images: ["/kaffer-gaon-lush-green-hills.webp"],
     },
 };
 
