@@ -76,7 +76,7 @@ export default function HowToReachClient() {
                             </div>
                             <div className="w-full h-[400px] lg:h-[500px] rounded-[1.5rem] overflow-hidden shadow-lg border border-border/40 relative group">
                                 <iframe
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14216.940409952542!2d88.58300263628373!3d26.974465584852926!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e44ffec0852e93%3A0x6bba3bc13db54eb5!2sLolegaon%2C%20West%20Bengal!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1129.5932822822385!2d88.55762386374627!3d27.022741161574157!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e41bf9de62178f%3A0xcf01526065f7270d!2sRigsel%20Homestay!5e1!3m2!1sen!2sin!4v1774791741952!5m2!1sen!2sin"
                                     width="100%"
                                     height="100%"
                                     style={{ border: 0 }}
@@ -151,7 +151,7 @@ export default function HowToReachClient() {
                                 <div className="relative z-10">
                                     <h4 className="font-serif italic font-medium text-3xl mb-4 drop-shadow-sm">Need a Cab?</h4>
                                     <p className="text-white/80 leading-relaxed mb-8 max-w-md text-sm sm:text-base">
-                                        driving in the hills requires experience. We have a network of trusted local drivers who know the roads up to Kaffer Gaon intimately. Let us know 24 hours in advance, and we will happily arrange your pickup and drop-off.
+                                        Driving in the hills requires experience. We have a network of trusted local drivers who know the roads up to Kaffer Gaon intimately. Let us know 24 hours in advance, and we will happily arrange your pickup and drop-off.
                                     </p>
                                     <a
                                         href={`https://wa.me/91${siteConfig.contact.primary}?text=Hello!%20I%20have%20a%20booking%20at%20Rigsel%20Homestay%20and%20would%20like%20assistance%20with%20arranging%20a%20pickup%20cab.`}

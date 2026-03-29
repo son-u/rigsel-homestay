@@ -82,7 +82,7 @@ export default function RootLayout({
               "starRating": { "@type": "Rating", "ratingValue": "4.9", "bestRating": "5" },
               "address": {
                 "@type": "PostalAddress",
-                "streetAddress": "Kaffer Gram Panchayat Gaon, Kaffer Gaon, Lolaygaon",
+                "streetAddress": "GP Road, Kaffer Gaon, Kaffir Khasmahal, Lolegaon",
                 "addressLocality": "Kalimpong",
                 "addressRegion": "West Bengal",
                 "postalCode": "734314",
@@ -90,8 +90,8 @@ export default function RootLayout({
               },
               "geo": {
                 "@type": "GeoCoordinates",
-                "latitude": "26.9744",
-                "longitude": "88.5830"
+                "latitude": "27.022741",
+                "longitude": "88.557624"
               },
               "sameAs": [
                 "https://www.facebook.com/share/1Akjx2Hi4n/"

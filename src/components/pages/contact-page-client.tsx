@@ -298,7 +298,7 @@ export default function ContactPageClient() {
                                                 Is mobile network available in Kaffer Gaon?
                                             </AccordionTrigger>
                                             <AccordionContent className="text-muted-foreground leading-relaxed text-base pt-0 pb-6">
-                                                Jio and Airtel generally provide decent mobile network coverage at the homestay, though signal strength can occasionally vary in the mountains. It&#39;s perfect for a partial digital detox!
+                                                Jio and Airtel generally provide decent mobile network coverage at the homestay. We also provide free Wi-Fi for our guests, ensuring you can stay connected even when the mountain cell signals occasionally vary!
                                             </AccordionContent>
                                         </AccordionItem>
                                         <AccordionItem value="item-4" className="border-border/50 border-b-0">
