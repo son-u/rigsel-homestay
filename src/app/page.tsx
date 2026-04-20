@@ -22,6 +22,14 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Home() {
-  return <HomePageClient />;
+import { supabase } from "@/lib/supabase";
+
+export default async function Home() {
+  const { data: reviews, error } = await supabase.rpc('get_rigsel_reviews');
+
+  if (error) {
+    console.error("Failed to fetch reviews:", error);
+  }
+
+  return <HomePageClient reviews={reviews || []} />;
 }

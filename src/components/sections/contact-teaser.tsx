@@ -9,7 +9,7 @@ export default function ContactTeaser() {
     return (
         <section
             aria-label="Call to action to book a stay"
-            className="relative py-24 sm:py-28 flex items-center justify-center overflow-hidden bg-[#1A1F1C] min-h-[450px]"
+            className="relative pt-24 pb-32 sm:pt-28 sm:pb-40 flex items-center justify-center overflow-hidden bg-[#1A1F1C] min-h-[450px]"
         >
 
             <div className="absolute inset-0 z-0" aria-hidden="true">

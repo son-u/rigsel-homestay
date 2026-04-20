@@ -1,59 +1,28 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { FaStar, FaQuoteLeft } from "react-icons/fa";
-
-
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
+import { cn, getAvatarColor } from "@/lib/utils";
 
-const REVIEWS = [
-    {
-        id: 1,
-        name: "Rohan Chatterjee",
-        location: "Kolkata, WB",
-        image: "/user-1.webp",
-        rating: 5,
-        text: "The perfect escape from city life. Waking up to the view of the Kalimpong hills from the wooden rooms was surreal. The organic Gorkhali thali they served for lunch is something I'll remember for a long time.",
-    },
-    {
-        id: 2,
-        name: "Nisha Sharma",
-        location: "Delhi",
-        image: "/user-3.webp",
-        rating: 5,
-        text: "Absolutely loved the hospitality! The family makes you feel like one of their own. We stayed in the Four Bed room and it was incredibly spacious. The mint tea in the evening while watching the sunset was magical.",
-    },
-    {
-        id: 3,
-        name: "Aditya Desai",
-        location: "Mumbai, MH",
-        image: "/user-2.webp",
-        rating: 5,
-        text: "If you want an authentic mountain homestay experience without the commercialized feel, this is it. Kaffer Gaon is peaceful, and Rigsel Homestay sits right in the best spot. The wood-fire meals were outstanding.",
-    },
-    {
-        id: 4,
-        name: "Priyanka Das",
-        location: "Siliguri, WB",
-        image: "/user-5.webp",
-        rating: 5,
-        text: "A beautiful property with even more beautiful hosts. The highlight was sitting by the fire at night, eating freshly made momos and listening to local stories. The rooms are cozy, beds are warm, and the bathroom was spotless.",
-    },
-    {
-        id: 5,
-        name: "Vikram Singh",
-        location: "Bengaluru, KA",
-        image: "/user-4.webp",
-        rating: 5,
-        text: "Remote but entirely worth the journey. The lack of crowd makes it so peaceful. Sourced entirely from their farm, the food is incredible. They arranged a cab for us from NJP seamlessly. Truly a 5-star experience.",
-    },
-];
+interface Review {
+    id: string | number;
+    name: string;
+    location?: string;
+    rating: number;
+    text: string;
+}
 
-export default function ReviewsSection() {
+interface Props {
+    initialReviews?: Review[];
+}
+
+export default function ReviewsSection({ initialReviews = [] }: Props) {
+    if (!initialReviews.length) return null;
+
     return (
         <section
             aria-labelledby="reviews-heading"
@@ -96,6 +65,12 @@ export default function ReviewsSection() {
                 >
                     <style dangerouslySetInnerHTML={{
                         __html: `
+            .swiper-wrapper {
+              align-items: stretch;
+            }
+            .swiper-slide {
+              height: auto;
+            }
             .swiper-pagination-bullet {
               background-color: var(--color-primary, #126439);
               opacity: 0.2;
@@ -132,7 +107,11 @@ export default function ReviewsSection() {
                         }}
                         className="swiper-container-padding"
                     >
-                        {REVIEWS.map((review) => (
+                        {initialReviews.map((review) => {
+                            const avatarColor = getAvatarColor(review.name);
+                            const initial = review.name.charAt(0).toUpperCase();
+                            
+                            return (
                             <SwiperSlide key={review.id} className="h-auto">
                                 <article className="group bg-white rounded-3xl border border-border/40 p-8 flex flex-col justify-between h-full shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-500 ease-out relative overflow-hidden h-full">
                                     {/* Subtle accent hover glow */}
@@ -152,15 +131,9 @@ export default function ReviewsSection() {
                                     {/* Author Info & Rating */}
                                     <footer className="flex items-center justify-between pt-6 border-t border-border/30 relative z-10 mt-auto">
                                         <div className="flex items-center gap-3">
-                                            {/* Avatar */}
-                                            <div className="relative w-11 h-11 rounded-full overflow-hidden bg-muted border border-border/50">
-                                                <Image
-                                                    src={review.image}
-                                                    alt={`Photo of ${review.name}`}
-                                                    fill
-                                                    className="object-cover group-hover:scale-110 transition-transform duration-500"
-                                                    sizes="44px"
-                                                />
+                                            {/* Initials Avatar */}
+                                            <div className={cn("relative w-11 h-11 rounded-full flex items-center justify-center text-white font-bold text-lg border border-white/20 shadow-sm", avatarColor)}>
+                                                {initial}
                                             </div>
                                             {/* Name & Location */}
                                             <div>
@@ -168,14 +141,14 @@ export default function ReviewsSection() {
                                                     {review.name}
                                                 </h3>
                                                 <p className="text-[10px] sm:text-xs font-medium tracking-wider uppercase text-muted-foreground mt-0.5">
-                                                    {review.location}
+                                                    {review.location || "Guest"}
                                                 </p>
                                             </div>
                                         </div>
 
                                         {/* Stars */}
                                         <div
-                                            className="flex text-[#F59E0B] gap-0.5 text-xs sm:text-sm"
+                                            className="flex text-[#FACC15] gap-0.5 text-xs sm:text-sm"
                                             aria-label={`${review.rating} out of 5 stars`}
                                         >
                                             {[...Array(review.rating)].map((_, index) => (
@@ -185,7 +158,7 @@ export default function ReviewsSection() {
                                     </footer>
                                 </article>
                             </SwiperSlide>
-                        ))}
+                        )})}
                     </Swiper>
                 </motion.div>
 

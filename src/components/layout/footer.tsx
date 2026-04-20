@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { FaFacebook, FaInstagram, FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
 import { AiOutlineCode } from "react-icons/ai";
 import { siteConfig } from "@/lib/site";
+import { ReviewModal } from "@/components/ui/review-modal";
 
 const QUICK_LINKS = [
     { name: "About Us", href: "/#about-rigsel-homestay" },
@@ -36,8 +37,20 @@ export default function Footer() {
             className="bg-[#F5F0E8] text-foreground/80 border-t border-border/30"
             aria-label="Site footer"
         >
+            {/* The Banner 'Leave a review' section sitting in document flow */}
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 -mt-16 relative z-20">
+                <div className="mx-auto max-w-5xl bg-white/90 backdrop-blur-xl border border-primary/20 rounded-[2rem] p-8 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-8 shadow-[0_20px_50px_rgba(0,0,0,0.05)] shadow-primary/5 border-b-[4px] border-b-primary/70 border-r-[4px] border-r-primary/30">
+                    <div className="text-center md:text-left max-w-xl">
+                        <h3 className="font-serif text-3xl sm:text-4xl italic text-foreground font-semibold tracking-tight">Enjoyed Your Stay?</h3>
+                        <p className="text-base sm:text-lg text-foreground/70 mt-3 leading-relaxed">Let us know what you loved! Help others discover the beauty and peace of Kaffer Gaon.</p>
+                    </div>
+                    <div className="shrink-0">
+                        <ReviewModal />
+                    </div>
+                </div>
+            </div>
 
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16 sm:pb-20">
                 <div className="grid grid-cols-1 md:grid-cols-[1.6fr_1fr_1.2fr] gap-12 xl:gap-20">
 
 

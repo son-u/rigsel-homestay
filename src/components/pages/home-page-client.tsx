@@ -12,7 +12,11 @@ import HowToReachTeaser from "@/components/sections/how-to-reach-teaser";
 import ReviewsSection from "@/components/sections/reviews-section";
 import ContactTeaser from "@/components/sections/contact-teaser";
 
-export default function HomePageClient() {
+interface Props {
+    reviews: any[];
+}
+
+export default function HomePageClient({ reviews }: Props) {
     return (
         <div className="flex flex-col w-full">
 
@@ -259,7 +263,7 @@ export default function HomePageClient() {
 
             <HowToReachTeaser />
 
-            <ReviewsSection />
+            <ReviewsSection initialReviews={reviews} />
 
             <ContactTeaser />
         </div>

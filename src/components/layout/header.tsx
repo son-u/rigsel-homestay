@@ -114,7 +114,7 @@ export default function Header() {
                         alt="Rigsel Homestay Logo"
                         width={200}
                         height={44}
-                        className="h-10 sm:h-11 md:h-12 w-auto transition-all"
+                        className="h-10 sm:h-11 lg:h-10 xl:h-12 w-auto transition-all"
                         priority
                     />
                 </Link>
@@ -156,11 +156,11 @@ export default function Header() {
                                                 }
                                             }
                                         }}
-                                        className="relative px-5 py-2.5 flex flex-col items-center justify-center group"
+                                        className="relative px-2 lg:px-3 xl:px-5 py-2 lg:py-2.5 flex flex-col items-center justify-center group"
                                     >
                                         <span
                                             className={cn(
-                                                "text-[14px] font-bold tracking-[0.15em] uppercase transition-colors duration-300",
+                                                "text-[12px] xl:text-[14px] font-bold tracking-wider xl:tracking-[0.15em] uppercase transition-colors duration-300",
                                                 isActive ? "text-primary" : "text-foreground/80 group-hover:text-primary"
                                             )}
                                         >
@@ -196,7 +196,7 @@ export default function Header() {
 
                     <Button
                         asChild
-                        className="hidden md:flex items-center gap-2.5 border border-transparent rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white shadow-lg shadow-[#25D366]/20 transition-all hover:scale-[1.02] h-11 px-7 font-bold text-[15px]"
+                        className="hidden md:flex items-center gap-2 lg:gap-2.5 border border-transparent rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white shadow-lg shadow-[#25D366]/20 transition-all hover:scale-[1.02] h-10 lg:h-11 px-5 lg:px-5 xl:px-7 font-bold text-[14px] xl:text-[15px]"
                     >
                         <a href={`https://wa.me/91${siteConfig.contact.primary}?text=Hello%20Rigsel%20Homestay!%20I%20would%20like%20to%20know%20more%20about%20booking%20a%20stay.`} target="_blank" rel="noopener noreferrer" aria-label="Contact Rigsel Homestay on WhatsApp">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6" aria-hidden="true">

@@ -6,6 +6,7 @@ import "./globals.css";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import WhatsAppFAB from "@/components/layout/whatsapp-fab";
+import { Toaster } from "@/components/ui/sonner";
 
 const poppins = Poppins({
   variable: "--font-sans",
@@ -65,38 +66,72 @@ export default function RootLayout({
         </main>
         <WhatsAppFAB />
         <Footer />
+        <Toaster position="bottom-center" />
         <GoogleAnalytics gaId="G-J21VL5HEFN" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "LodgingBusiness",
-              "name": "Rigsel Homestay",
-              "description": "Authentic Himalayan village homestay in Kaffer Gaon, Kalimpong, West Bengal. Hosted by Minu Tamang & Mingma Tamang.",
-              "url": "https://rigselhomestay.in",
-              "image": "https://rigselhomestay.in/rigsel-homestay-kaffer-gaon-kalimpong.webp",
-              "telephone": "+919064894704",
-              "email": "rigselhomestay@gmail.com",
-              "priceRange": "₹₹",
-              "starRating": { "@type": "Rating", "ratingValue": "4.9", "bestRating": "5" },
-              "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "GP Road, Kaffer Gaon, Kaffir Khasmahal, Lolegaon",
-                "addressLocality": "Kalimpong",
-                "addressRegion": "West Bengal",
-                "postalCode": "734314",
-                "addressCountry": "IN"
+            __html: JSON.stringify([
+              {
+                "@context": "https://schema.org",
+                "@type": "LodgingBusiness",
+                "name": "Rigsel Homestay",
+                "description": "Authentic Himalayan village homestay in Kaffer Gaon, Kalimpong, West Bengal. Hosted by Minu Tamang & Mingma Tamang.",
+                "url": "https://rigselhomestay.in",
+                "image": "https://rigselhomestay.in/rigsel-homestay-kaffer-gaon-kalimpong.webp",
+                "telephone": "+919064894704",
+                "email": "rigselhomestay@gmail.com",
+                "priceRange": "₹₹",
+                "starRating": { "@type": "Rating", "ratingValue": "4.9", "bestRating": "5" },
+                "address": {
+                  "@type": "PostalAddress",
+                  "streetAddress": "GP Road, Kaffer Gaon, Kaffir Khasmahal, Lolegaon",
+                  "addressLocality": "Kalimpong",
+                  "addressRegion": "West Bengal",
+                  "postalCode": "734314",
+                  "addressCountry": "IN"
+                },
+                "geo": {
+                  "@type": "GeoCoordinates",
+                  "latitude": "27.022741",
+                  "longitude": "88.557624"
+                },
+                "sameAs": [
+                  "https://www.facebook.com/share/1Akjx2Hi4n/"
+                ]
               },
-              "geo": {
-                "@type": "GeoCoordinates",
-                "latitude": "27.022741",
-                "longitude": "88.557624"
+              {
+                "@context": "https://schema.org",
+                "@type": "WebSite",
+                "name": "Rigsel Homestay",
+                "url": "https://rigselhomestay.in",
+                "description": "Experience authentic Himalayan village hospitality at Rigsel Homestay. A peaceful retreat in Kaffer Gaon surrounded by misty mountains, nature, and Gorkha culture."
               },
-              "sameAs": [
-                "https://www.facebook.com/share/1Akjx2Hi4n/"
-              ]
-            })
+              {
+                "@context": "https://schema.org",
+                "@type": "ItemList",
+                "itemListElement": [
+                  {
+                    "@type": "SiteNavigationElement",
+                    "position": 1,
+                    "name": "Explore Attractions",
+                    "url": "https://rigselhomestay.in/explore"
+                  },
+                  {
+                    "@type": "SiteNavigationElement",
+                    "position": 2,
+                    "name": "Photo Gallery",
+                    "url": "https://rigselhomestay.in/gallery"
+                  },
+                  {
+                    "@type": "SiteNavigationElement",
+                    "position": 3,
+                    "name": "Contact Us",
+                    "url": "https://rigselhomestay.in/contact"
+                  }
+                ]
+              }
+            ])
           }}
         />
       </body>
