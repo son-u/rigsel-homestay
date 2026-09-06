@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
@@ -17,6 +18,12 @@ interface Props {
 }
 
 export default function HomePageClient({ reviews }: Props) {
+    useEffect(() => {
+        if (typeof window !== "undefined" && !window.location.hash) {
+            window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+        }
+    }, []);
+
     return (
         <div className="flex flex-col w-full">
 
@@ -163,25 +170,6 @@ export default function HomePageClient({ reviews }: Props) {
                                     </p>
                                 </div>
                             </div>
-
-
-                            <motion.div
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.6, delay: 0.4 }}
-                                className="absolute -bottom-6 -right-4 sm:-right-8 bg-white rounded-2xl shadow-xl shadow-black/10 px-5 py-4 flex items-center gap-3 border border-border/40"
-                            >
-                                <div className="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center flex-shrink-0">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#0DA5E9" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5" aria-hidden="true">
-                                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                                    </svg>
-                                </div>
-                                <div>
-                                    <p className="text-xs font-bold tracking-widest uppercase text-muted-foreground">Verified Host</p>
-                                    <p className="text-sm font-serif font-bold italic text-foreground">{siteConfig.hosts}</p>
-                                </div>
-                            </motion.div>
                         </motion.div>
 
 
@@ -214,7 +202,7 @@ export default function HomePageClient({ reviews }: Props) {
 
 
                             <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-xl">
-                                Hosted by <strong className="font-serif text-xl text-foreground font-semibold italic">{siteConfig.hosts}</strong>, Far from crowded tourist trails, <strong className="font-serif text-xl text-foreground font-semibold italic">Rigsel Homestay</strong> offers a genuine slice of Himalayan life in <strong className="font-serif text-xl text-foreground font-semibold italic">Kaffer Gaon, Kalimpong</strong>. Wake up to panoramic valley views, savour home-cooked Lepcha and Gorkha delicacies, and let the slow mountain pace heal your soul.
+                                Far from crowded tourist trails, <strong className="font-serif text-xl text-foreground font-semibold italic">Rigsel Homestay</strong> offers a genuine slice of Himalayan life in <strong className="font-serif text-xl text-foreground font-semibold italic">Kaffer Gaon, Kalimpong</strong>. Wake up to panoramic valley views, savour home-cooked Lepcha and Gorkha delicacies, and let the slow mountain pace heal your soul.
                             </p>
 
 

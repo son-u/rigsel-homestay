@@ -100,10 +100,10 @@ export default function TermsOfServicePage() {
                                     </a>{" "}
                                     or call us on{" "}
                                     <a
-                                        href="tel:+919064894704"
+                                        href="tel:+919830649862"
                                         className="text-primary font-medium hover:underline"
                                     >
-                                        +91 90648 94704
+                                        +91 98306 49862
                                     </a>
                                     .
                                 </p>

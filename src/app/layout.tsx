@@ -7,6 +7,7 @@ import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import WhatsAppFAB from "@/components/layout/whatsapp-fab";
 import { Toaster } from "@/components/ui/sonner";
+import { siteConfig } from "@/lib/site";
 
 const poppins = Poppins({
   variable: "--font-sans",
@@ -76,11 +77,11 @@ export default function RootLayout({
                 "@context": "https://schema.org",
                 "@type": "LodgingBusiness",
                 "name": "Rigsel Homestay",
-                "description": "Authentic Himalayan village homestay in Kaffer Gaon, Kalimpong, West Bengal. Hosted by Minu Tamang & Mingma Tamang.",
+                "description": "Authentic Himalayan village homestay in Kaffer Gaon, Kalimpong, West Bengal.",
                 "url": "https://rigselhomestay.in",
                 "image": "https://rigselhomestay.in/rigsel-homestay-kaffer-gaon-kalimpong.webp",
-                "telephone": "+919064894704",
-                "email": "rigselhomestay@gmail.com",
+                "telephone": `+91${siteConfig.contact.primary}`,
+                "email": siteConfig.contact.email,
                 "priceRange": "₹₹",
                 "starRating": { "@type": "Rating", "ratingValue": "4.9", "bestRating": "5" },
                 "address": {

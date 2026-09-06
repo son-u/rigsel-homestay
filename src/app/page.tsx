@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Rigsel Homestay — Serene Village Escape in Kaffer Gaon, Kalimpong",
     description:
-      "Hosted by Minu & Mingma Tamang. Wake up to panoramic valley views, savour home-cooked Gorkha meals, and reconnect with nature in the serene forests of Kaffer Gaon.",
+      "Wake up to panoramic valley views, savour home-cooked Gorkha meals, and reconnect with nature in the serene forests of Kaffer Gaon.",
     images: ["/kalimpong-homestay-sunrise-valley-view.webp"],
     type: "website",
   },
@@ -22,14 +22,8 @@ export const metadata: Metadata = {
   },
 };
 
-import { supabase } from "@/lib/supabase";
+import { reviews } from "@/data/reviews";
 
-export default async function Home() {
-  const { data: reviews, error } = await supabase.rpc('get_rigsel_reviews');
-
-  if (error) {
-    console.error("Failed to fetch reviews:", error);
-  }
-
-  return <HomePageClient reviews={reviews || []} />;
+export default function Home() {
+  return <HomePageClient reviews={reviews} />;
 }

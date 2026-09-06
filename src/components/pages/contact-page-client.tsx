@@ -28,7 +28,9 @@ import {
 } from "@/components/ui/accordion";
 
 const PRIMARY_PHONE = `+91 ${siteConfig.contact.primary.slice(0, 5)} ${siteConfig.contact.primary.slice(5)}`;
-const SECONDARY_PHONE = `+91 ${siteConfig.contact.secondary.slice(0, 5)} ${siteConfig.contact.secondary.slice(5)}`;
+const SECONDARY_PHONE = siteConfig.contact.secondary
+    ? `+91 ${siteConfig.contact.secondary.slice(0, 5)} ${siteConfig.contact.secondary.slice(5)}`
+    : null;
 const WHATSAPP_NUMBER = `91${siteConfig.contact.primary}`;
 
 const formSchema = z.object({
@@ -229,7 +231,9 @@ export default function ContactPageClient() {
                                         <div className="flex flex-col gap-1.5">
                                             <p className="text-sm font-semibold text-muted-foreground uppercase tracking-wider">Call or WhatsApp</p>
                                             <a href={`tel:${PRIMARY_PHONE.replace(/\s/g, "")}`} className="text-xl font-medium text-foreground hover:text-primary transition-colors" aria-label={`Call us at ${PRIMARY_PHONE}`}>{PRIMARY_PHONE}</a>
-                                            <a href={`tel:${SECONDARY_PHONE.replace(/\s/g, "")}`} className="text-xl font-medium text-foreground hover:text-primary transition-colors" aria-label={`Call us at ${SECONDARY_PHONE}`}>{SECONDARY_PHONE}</a>
+                                            {SECONDARY_PHONE && (
+                                                <a href={`tel:${SECONDARY_PHONE.replace(/\s/g, "")}`} className="text-xl font-medium text-foreground hover:text-primary transition-colors" aria-label={`Call us at ${SECONDARY_PHONE}`}>{SECONDARY_PHONE}</a>
+                                            )}
                                         </div>
                                     </div>
 

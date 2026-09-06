@@ -7,14 +7,7 @@ import { Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { cn, getAvatarColor } from "@/lib/utils";
-
-interface Review {
-    id: string | number;
-    name: string;
-    location?: string;
-    rating: number;
-    text: string;
-}
+import type { Review } from "@/data/reviews";
 
 interface Props {
     initialReviews?: Review[];

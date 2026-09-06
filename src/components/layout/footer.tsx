@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { FaFacebook, FaInstagram, FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
 import { AiOutlineCode } from "react-icons/ai";
 import { siteConfig } from "@/lib/site";
-import { ReviewModal } from "@/components/ui/review-modal";
+import { MdArrowForwardIos } from "react-icons/md";
 
 const QUICK_LINKS = [
     { name: "About Us", href: "/#about-rigsel-homestay" },
@@ -45,7 +45,20 @@ export default function Footer() {
                         <p className="text-base sm:text-lg text-foreground/70 mt-3 leading-relaxed">Let us know what you loved! Help others discover the beauty and peace of Kaffer Gaon.</p>
                     </div>
                     <div className="shrink-0">
-                        <ReviewModal />
+                        <a
+                            href={siteConfig.urls.googleReview}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="group relative inline-flex items-center justify-center gap-3 px-8 h-14 bg-primary hover:bg-primary/90 text-white font-bold rounded-full overflow-hidden transition-all duration-300 hover:scale-[1.03] hover:shadow-xl shadow-black/10 w-full sm:w-auto focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring text-base"
+                            aria-label="Leave a review on Google"
+                        >
+                            <span className="relative z-10 transition-colors duration-300">
+                                Leave a Review
+                            </span>
+                            <span className="relative z-10 transition-transform duration-300 group-hover:translate-x-1 flex items-center" aria-hidden="true">
+                                <MdArrowForwardIos className="h-4 w-4" />
+                            </span>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -143,12 +156,14 @@ export default function Footer() {
                                     >
                                         +91 {siteConfig.contact.primary.slice(0, 5)} {siteConfig.contact.primary.slice(5)}
                                     </a>
-                                    <a
-                                        href={`tel:+91${siteConfig.contact.secondary}`}
-                                        className="hover:text-primary transition-colors"
-                                    >
-                                        +91 {siteConfig.contact.secondary.slice(0, 5)} {siteConfig.contact.secondary.slice(5)}
-                                    </a>
+                                    {siteConfig.contact.secondary && (
+                                        <a
+                                            href={`tel:+91${siteConfig.contact.secondary}`}
+                                            className="hover:text-primary transition-colors"
+                                        >
+                                            +91 {siteConfig.contact.secondary.slice(0, 5)} {siteConfig.contact.secondary.slice(5)}
+                                        </a>
+                                    )}
                                 </div>
                             </div>
                             <div className="flex items-center gap-3 text-sm text-foreground/60">

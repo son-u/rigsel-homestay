@@ -34,36 +34,36 @@ const SLIDES = [
     },
 ] as const;
 
-const INTERVAL_MS = 4000;
+const INTERVAL_MS = 7000;
 
 
 const kenBurnsTransition: Transition = {
-    duration: 1.2,
-    ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number],
+    duration: 2.0,
+    ease: [0.25, 0.1, 0.25, 1.0],
 };
 
 const imageVariants: Variants = {
-    enter: { scale: 1.08, opacity: 0 },
+    enter: { scale: 1.06, opacity: 0 },
     center: { scale: 1.0, opacity: 1, transition: kenBurnsTransition },
-    exit: { opacity: 0, transition: { duration: 0.8 } },
+    exit: { opacity: 0, transition: { duration: 1.6, ease: "easeInOut" } },
 };
 
 
 const containerVariants: Variants = {
     hidden: {},
-    visible: { transition: { staggerChildren: 0.15, delayChildren: 0.55 } },
-    exit: { opacity: 0, transition: { duration: 0.25 } },
+    visible: { transition: { staggerChildren: 0.12, delayChildren: 0.3 } },
+    exit: { opacity: 0, y: -8, transition: { duration: 0.4, ease: "easeInOut" } },
 };
 
 const itemVariants: Variants = {
-    hidden: { opacity: 0, y: 28 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.7, type: "tween" } },
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } },
 };
 
 
 function ProgressBar({ slideKey }: { slideKey: number }) {
     return (
-        <div className="h-[2px] w-16 bg-white/30 rounded-full overflow-hidden">
+        <div className="h-[2px] w-20 bg-white/30 rounded-full overflow-hidden">
             <motion.div
                 key={slideKey}
                 className="h-full bg-white rounded-full origin-left"
@@ -91,7 +91,7 @@ export default function HeroSlider() {
 
     return (
         <section
-            className="relative w-full h-screen min-h-[600px] overflow-hidden"
+            className="relative w-full h-screen h-[100dvh] max-h-[100dvh] overflow-hidden"
             aria-label="Rigsel Homestay — Hero Image Slider"
         >
             <AnimatePresence>
@@ -119,13 +119,13 @@ export default function HeroSlider() {
                 className="absolute inset-0 pointer-events-none"
                 style={{
                     background:
-                        "linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.3) 40%, rgba(0,0,0,0.05) 70%, transparent 100%)",
+                        "linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.15) 25%, rgba(0,0,0,0.3) 55%, rgba(0,0,0,0.75) 100%)",
                 }}
                 aria-hidden="true"
             />
 
-            <div className="absolute inset-0 flex flex-col justify-end pb-28 sm:pb-36 px-6 sm:px-12 lg:px-20">
-                <div className="max-w-7xl mx-auto w-full">
+            <div className="absolute inset-0 flex flex-col justify-center pt-16 sm:pt-20 lg:pt-24 pb-14 sm:pb-16 lg:pb-20 px-5 sm:px-10 lg:px-16">
+                <div className="max-w-6xl 2xl:max-w-7xl mx-auto w-full">
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={`text-${slide.id}`}
@@ -133,11 +133,11 @@ export default function HeroSlider() {
                             initial="hidden"
                             animate="visible"
                             exit="exit"
-                            className="flex flex-col items-start gap-4"
+                            className="flex flex-col items-start gap-2.5 sm:gap-4"
                         >
                             <motion.p
                                 variants={itemVariants}
-                                className="inline-flex items-center text-xs sm:text-sm font-bold tracking-[0.22em] uppercase text-white px-4 py-1.5 rounded-full"
+                                className="inline-flex items-center text-[11px] sm:text-xs md:text-sm font-bold tracking-[0.2em] sm:tracking-[0.22em] uppercase text-white px-3.5 sm:px-4 py-1 sm:py-1.5 rounded-full"
                                 style={{
                                     textShadow: "0 1px 8px rgba(0,0,0,0.6)",
                                     background: "rgba(13, 165, 233, 0.3)",
@@ -151,7 +151,7 @@ export default function HeroSlider() {
 
                             <motion.h1
                                 variants={itemVariants}
-                                className="font-serif italic text-5xl sm:text-6xl lg:text-7xl xl:text-[5.5rem] font-medium text-white leading-[1.04] max-w-3xl"
+                                className="font-serif italic text-4xl xs:text-[2.65rem] sm:text-5xl lg:text-[3.75rem] xl:text-[4.25rem] 2xl:text-[4.85rem] font-medium text-white leading-[1.08] max-w-4xl"
                                 style={{ textShadow: "0 2px 24px rgba(0,0,0,0.35)" }}
                             >
                                 {slide.headline.map((line, i) => (
@@ -162,18 +162,18 @@ export default function HeroSlider() {
 
                             <motion.p
                                 variants={itemVariants}
-                                className="text-base sm:text-lg text-white/80 max-w-xl leading-relaxed"
+                                className="text-xs xs:text-sm sm:text-base lg:text-lg text-white/85 max-w-xl leading-relaxed"
                                 style={{ textShadow: "0 1px 10px rgba(0,0,0,0.55)" }}
                             >
                                 {slide.sub}
                             </motion.p>
 
 
-                            <motion.div variants={itemVariants} className="flex w-full sm:w-auto gap-3 mt-2 sm:mt-4">
+                            <motion.div variants={itemVariants} className="flex w-full sm:w-auto gap-3 mt-2 sm:mt-3.5">
                                 <Link
                                     href="/contact"
                                     aria-label="Book your stay at Rigsel Homestay"
-                                    className="group relative flex-1 sm:flex-none flex items-center justify-center gap-2 sm:gap-3 px-4 sm:px-8 py-3.5 sm:py-4 bg-primary hover:bg-primary/90 text-white font-bold rounded-full overflow-hidden transition-all duration-300 hover:scale-[1.03] hover:shadow-xl shadow-black/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white text-sm sm:text-base"
+                                    className="group relative flex-1 sm:flex-none flex items-center justify-center gap-2 sm:gap-2.5 px-6 sm:px-8 py-3.5 sm:py-4 min-h-[48px] sm:min-h-[54px] bg-primary hover:bg-primary/90 text-white font-bold rounded-full overflow-hidden transition-all duration-300 hover:scale-[1.03] hover:shadow-xl shadow-black/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white text-sm sm:text-base"
                                 >
                                     <span className="relative z-10 transition-colors duration-300 whitespace-nowrap">
                                         Book Stay
@@ -185,7 +185,7 @@ export default function HeroSlider() {
                                 <Link
                                     href="/explore"
                                     aria-label="Explore Kaffer Gaon and nearby attractions"
-                                    className="flex-1 sm:flex-none flex items-center justify-center px-4 sm:px-8 py-3.5 sm:py-4 rounded-full border border-white/40 bg-white/10 backdrop-blur-sm text-white font-bold text-sm sm:text-base tracking-wide transition-all hover:bg-white/20 hover:scale-[1.03] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white whitespace-nowrap"
+                                    className="flex-1 sm:flex-none flex items-center justify-center px-6 sm:px-8 py-3.5 sm:py-4 min-h-[48px] sm:min-h-[54px] rounded-full border border-white/40 bg-white/10 backdrop-blur-sm text-white font-bold text-sm sm:text-base tracking-wide transition-all hover:bg-white/20 hover:scale-[1.03] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white whitespace-nowrap"
                                 >
                                     Explore
                                 </Link>
@@ -197,7 +197,7 @@ export default function HeroSlider() {
 
 
             <div
-                className="absolute bottom-9 sm:bottom-11 left-6 sm:left-12 lg:left-20 flex items-center gap-4"
+                className="absolute bottom-4 sm:bottom-6 lg:bottom-7 left-5 sm:left-10 lg:left-16 flex items-center gap-3 sm:gap-4"
                 role="status"
                 aria-live="polite"
                 aria-label={`Slide ${current + 1} of ${SLIDES.length}`}
@@ -233,7 +233,7 @@ export default function HeroSlider() {
 
 
             <div
-                className="absolute bottom-9 right-6 sm:right-12 lg:right-20 hidden sm:flex flex-col items-center gap-2"
+                className="absolute bottom-5 sm:bottom-6 lg:bottom-7 right-6 sm:right-12 lg:right-20 hidden sm:flex flex-col items-center gap-2"
                 aria-hidden="true"
             >
                 <span className="text-[9px] font-bold tracking-[0.3em] uppercase text-white/50 [writing-mode:vertical-rl] rotate-180">
